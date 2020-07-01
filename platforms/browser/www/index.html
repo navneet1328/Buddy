@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="theme-color" content="#2196f3">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
   <title>Buddy</title>
@@ -17,45 +16,106 @@
   <link rel="stylesheet" href="./css/app.css">
 </head>
 <body>
-  <div id="app">
-  <!-- Your main view/tab, should have "view-main" class. It also has "tab-active" class -->
-  <div id="view-home" class="view view-main tab tab-active">
-    <!-- Page, data-name contains page name which can be used in page callbacks -->
-    <div class="page" data-name="home">
-      <!-- Top Navbar -->
   
-      <div class="navbar">
-        <div class="navbar-inner">
 
-          <!-- Logo In Top Navbar-->
-          <div class="left sliding">
-            <img src="image/Buddy-logo.svg" width="90px" height="90px"> 
-          </div>
   
-          <div class="title sliding">Home</div>
-    
-          <div class="right ">
-            <img src="image/dummy.jpg" class="image-cover"> 
-          </div>
-
+  <div class="view view-main tab tab-active">
+      <!-- Page, data-name contains page name which can be used in page callbacks -->
+  <div class="page" >
+    <div class="card demo-card-header-pic">
+      <div class="card-header align-items-flex-end">
+        <div>
+        <!-- Tab 1 -->
+        <a href="#" class="tab-link tab-link-active" data-tab=".tab1">LOGIN</a>
+        <!-- Tab 2 -->
+        <a href="#" class="tab-link" data-tab=".tab2">REGISTER</a>
         </div>
       </div>
-   </div>
-   
-    <script>
-    //  window.location="./pages/chat-message.html";
-    window.location="./pages/sign-in.html";
-    </script>
-  <!-- Cordova -->
-  <!--
-  <script src="cordova.js"></script>
-  -->
-
-  <!-- Framework7 library -->
-  <script src="./framework7/js/framework7.min.js"></script>
-
+    <div class="card-content card-content-padding">
+    <div class="tabs tabs-top">
+    
+    <!-- Tab 1 Content  -->
+    <div class="tab tab1 tab-active">
   
-  <!-- Your custom app scripts -->
-  <script src="./js/app.js"></script>
+    <!-- Login Form -->
+      <form>
+        <div class="list">
+          <ul>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-floating-label">E-mail</div>
+                <div class="item-input-wrap">
+                <input type="email">
+                <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            <li class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-floating-label">Password</div>
+                <div class="item-input-wrap">
+                <input type="password">
+                <span class="input-clear-button"></span>
+                </div>
+              </div>
+            </li>
+            </ul>
+        </div>
+  
+      <!-- Login Button - Navigating to Home Page -->
+      <div class="col button button-fill button-round" onclick="window.location='tabs.html'">Login</div>
+  
+      </form>
+    
+    </div>
+    
+    <!-- Tab 1 Content  -->
+  <div class="tab tab2">
+    <div class="block">
+  
+      <!-- Volunteer Card -->
+    <div class="card">
+      <div class="card-content ">
+        <div style="height: 50%;" class="col button button-large button-raised"> 
+          <div>
+          <img style="width: 50%;" src="./image/dummy.jpg" alt="">
+          <h3>As Volunteer</h3>
+          </div>
+        </div>
+      </div>  
+    </div>
+  
+    <!-- Seeker Card -->
+    <div class="card">
+      <div class="card-content ">
+        <div style="height: 50%;" class="col button button-large button-raised"> 
+          <div onclick="window.location='../Login/RegisterDetail.html'">
+          <img style="width: 50%;" src="./image/dummy.jpg" alt="">
+          <h3>As Seeker</h3>
+          </div>
+        </div>
+      </div>  
+    </div>
+  
+    </div>
+  </div>
+  
+  
+  </div>
+    
+  </div>
+  </div>
+  
+  </div>
+  </div>
+     
+  
+
+
+
+<script src="./framework7/js/framework7.min.js"></script>
+<!-- Your custom app scripts -->
+<script src="./js/app.js"></script>
+
 </body>
 </html>

@@ -1,6 +1,6 @@
 // Dom7
 var $$ = Dom7;
-
+var routes;
 
 // Framework7 App main instance
 var app  = new Framework7({
@@ -41,7 +41,7 @@ var settingsView = app.views.create('#view-profile', {
 });
 
 
-// Login Screen Demo
+//Login Screen Demo
 // $$('#my-login-screen .login-button').on('click', function () {
 //   var username = $$('#my-login-screen [name="username"]').val();
 //   var password = $$('#my-login-screen [name="password"]').val();
