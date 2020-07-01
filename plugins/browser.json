@@ -1,0 +1,65 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-battery-status": {
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    },
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    },
+    "cordova-plugin-firebase-messaging": {
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    },
+    "cordova-plugin-globalization": {
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    },
+    "cordova-plugin-firebase-analytics": {
+      "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "true",
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    },
+    "cordova-support-android-plugin": {
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    },
+    "cordova-support-google-services": {
+      "PACKAGE_NAME": "com.phonegap.buddy"
+    }
+  }
+}

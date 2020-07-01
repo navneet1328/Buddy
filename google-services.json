@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "905442756005",
+    "firebase_url": "https://buddy-bbde5.firebaseio.com",
+    "project_id": "buddy-bbde5",
+    "storage_bucket": "buddy-bbde5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905442756005:android:6179c8baffe6aab326944c",
+        "android_client_info": {
+          "package_name": "com.phonegap.buddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905442756005-b1lkcgmpsf72dalpv5af84vpnroia33b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgkBUh3Jxkya6NW0CcKh0ZkV3tq70Nd6c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905442756005-b1lkcgmpsf72dalpv5af84vpnroia33b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
