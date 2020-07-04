@@ -55,12 +55,7 @@ var settingsView = app.views.create('#view-profile', {
 
 /* POPOVER ========================================*/
 // Events
-$$('.popover-links').on('popover:open', function (e) {
-  console.log('About popover open');
-});
-$$('.popover-linkst').on('popover:opened', function (e) {
-  console.log('About popover opened');
-});
+
 /*Edit Photo Button ===============================*/
 //  to open the toast
 
@@ -81,41 +76,53 @@ $$('.popover-linkst').on('popover:opened', function (e) {
 // });
 
 // Camera ==============================================================
-document.addEventListener("deviceready", init, false);
-function init() {
-
-	function onSuccess(imageData) {
-		console.log('success');
-		var image = document.getElementById('myImage');
-		image.src = imageData;
-	}
-
-	function onFail(message) {
-		navigator.notification.alert(
-			message, null, "Camera Failure");
-	}	
-
-	//Use from Camera
-	document.querySelector("#takePhoto").addEventListener("touchend", function() {
-		navigator.camera.getPicture(onSuccess, onFail, { 
-			quality: 50,
-			sourceType: Camera.PictureSourceType.CAMERA,
-			destinationType: Camera.DestinationType.FILE_URI
-		});
-
-	});
-
-	//Use from Library
-	document.querySelector("#uploadPhoto").addEventListener("touchend", function() {
-		navigator.camera.getPicture(onSuccess, onFail, { 
-			quality: 50,
-			sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-			destinationType: Camera.DestinationType.FILE_URI
-		});
-
-	});
-
-}
-// ======================================================================
 
 
+// $$('.popover-links').on('popover:open', function (e) {
+// 	console.log('popover open');
+//   });
+//   $$('.popover-links').on('popover:opened', function (e) {
+// 	console.log(' popover opened');
+//   });
+  
+  document.addEventListener("deviceready", init, false);
+  function init() {
+  
+	  function onSuccess(imageData) {
+		  console.log('success');
+		  var image = document.getElementById('myImage');
+		  image.src = imageData;
+	  }
+  
+	  function onFail(message) {
+		  navigator.notification.alert(
+			  message, null, "Camera Failure");
+	  }	
+  
+	  //Use from Camera
+	  document.querySelector("#takePicture").addEventListener("touchend", function() {
+      // console.log("here in");
+		  navigator.camera.getPicture(onSuccess, onFail, { 
+			  quality: 50,
+			  sourceType: Camera.PictureSourceType.CAMERA,
+        destinationType: Camera.DestinationType.FILE_URI,
+        mediaType: Camera.mediaType.PICTURE,
+        encodingType: Camera.EncodingType.JPEG,
+        targetWidth: 300,
+        targetHeight: 400
+		  });
+  
+	  });
+  
+	  //Use from Library
+	  document.querySelector("#usePicture").addEventListener("touchend", function() {
+		  navigator.camera.getPicture(onSuccess, onFail, { 
+			  quality: 50,
+			  sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+			  destinationType: Camera.DestinationType.FILE_URI
+		  });
+  
+	  });
+  
+  }
+  // ======================================================================

@@ -1,3 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>Buddy</title>
+
+  <link rel="stylesheet" href="../framework7/css/framework7.min.css">
+  <link rel="stylesheet" href="../css/icons.css">
+  <link rel="stylesheet" href="../css/app.css">
+</head>
+<body>
+
+
+
 <div class="page" data-name="profile">
 
   <div class="navbar">
@@ -21,23 +42,32 @@
       <img src="image/dummy.jpg" class="profile">
 
         <!-- <button  class="button-edit button-raised open-toast-callback">Edit Photo</button> -->
-        <a class="link popover-open" href="#" data-popover=".popover-links">Edit Photo</a>
+        <!-- <a class="link popover-open" href="#" data-popover=".popover-links">Edit Photo</a> -->
+        <button id="takePicture">Take Picture</button>
+      	<button id="usePicture">Use Picture</button>
+
+	<img id="myImage">
     </div>
 
 <!-- Popover ===================================================== -->
-<div class="popover popover-links">
+<!-- <div class="popover popover-links">
   <div class="popover-inner">
     <div class="list">
       <ul>
         <li><a class="list-button item-link" href="#">TAKE PHOTO</a></li>
-        <li><a class="list-button item-link" href="#">UPLOAD PHOTO</a></li>
-        <li><a class="list-button item-link" href="#">REMOVE</a></li>
+          <li><a class="list-button item-link" href="#">UPLOAD PHOTO</a></li>
+          <li><a class="list-button item-link" href="#">REMOVE</a></li> -->
+          <!-- <li><a class="list-button item-link" href="#">Link 4</a></li> -->
+        <!-- <li><button id="takePhoto" class="list-button item-link" href="#">TAKE PHOTO</button></li>
+        <li><button id="uploadPhoto" class="list-button item-link" href="#">UPLOAD PHOTO</button></li>
+        <li><button class="list-button item-link" href="#">REMOVE</button></li> -->
         <!-- <li><a class="list-button item-link" href="#">Link 4</a></li> -->
-      </ul>
+      <!-- </ul>
     </div>
   </div>
-</div>
+</div> -->
 <!-- ============================================================= -->
+
 
     <form class="list form-store-data" id="my-form">
       <ul>
@@ -123,3 +153,13 @@
     </form>
   </div>
 </div>
+
+<!-- Script for Framework 7 -->
+<script type="text/javascript" src="../framework7/js/framework7.min.js"></script>
+<script type="text/javascript" src="../js/app.js"></script>
+
+
+
+</body>
+
+</html>
