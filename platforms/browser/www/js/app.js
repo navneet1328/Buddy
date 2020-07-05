@@ -53,9 +53,76 @@ var settingsView = app.views.create('#view-profile', {
 
 
 
+/* POPOVER ========================================*/
+// Events
+
+/*Edit Photo Button ===============================*/
+//  to open the toast
 
 
+// Create toast with callback on close
+// var toastWithCallback = app.toast.create({
+//   text: 'Callback on close',
+//   closeButton: true,
+//   on: {
+//     close: function () {
+//       app.dialog.alert('Toast closed');
+//     },
+//   }
+// });
+// document.getElementById('.open-toast-callback').addEventListener('click', function () {
+//   console.log("chlra h!");
+//   toastWithCallback.open();
+// });
+
+// Camera ==============================================================
 
 
-
-
+// $$('.popover-links').on('popover:open', function (e) {
+// 	console.log('popover open');
+//   });
+//   $$('.popover-links').on('popover:opened', function (e) {
+// 	console.log(' popover opened');
+//   });
+  
+  document.addEventListener("deviceready", init, false);
+  function init() {
+  
+	  function onSuccess(imageData) {
+		  console.log('success');
+		  var image = document.getElementById('myImage');
+		  image.src = imageData;
+	  }
+  
+	  function onFail(message) {
+		  navigator.notification.alert(
+			  message, null, "Camera Failure");
+	  }	
+  
+	  //Use from Camera
+	  document.querySelector("#takePicture").addEventListener("touchend", function() {
+      // console.log("here in");
+		  navigator.camera.getPicture(onSuccess, onFail, { 
+			  quality: 50,
+			  sourceType: Camera.PictureSourceType.CAMERA,
+        destinationType: Camera.DestinationType.FILE_URI,
+        mediaType: Camera.mediaType.PICTURE,
+        encodingType: Camera.EncodingType.JPEG,
+        targetWidth: 300,
+        targetHeight: 400
+		  });
+  
+	  });
+  
+	  //Use from Library
+	  document.querySelector("#usePicture").addEventListener("touchend", function() {
+		  navigator.camera.getPicture(onSuccess, onFail, { 
+			  quality: 50,
+			  sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+			  destinationType: Camera.DestinationType.FILE_URI
+		  });
+  
+	  });
+  
+  }
+  // ======================================================================
