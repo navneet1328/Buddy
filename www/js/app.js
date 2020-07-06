@@ -3,7 +3,7 @@ var $$ = Dom7;
 var routes;
 
 // Framework7 App main instance
-var app  = new Framework7({
+var app = new Framework7({
   root: '#app', // App root element
   id: 'io.framework7.testapp', // App bundle ID
   name: 'Framework7', // App name
@@ -84,45 +84,54 @@ var settingsView = app.views.create('#view-profile', {
 //   $$('.popover-links').on('popover:opened', function (e) {
 // 	console.log(' popover opened');
 //   });
-  
-  document.addEventListener("deviceready", init, false);
-  function init() {
-  
-	  function onSuccess(imageData) {
-		  console.log('success');
-		  var image = document.getElementById('myImage');
-		  image.src = imageData;
-	  }
-  
-	  function onFail(message) {
-		  navigator.notification.alert(
-			  message, null, "Camera Failure");
-	  }	
-  
-	  //Use from Camera
-	  document.querySelector("#takePicture").addEventListener("touchend", function() {
-      // console.log("here in");
-		  navigator.camera.getPicture(onSuccess, onFail, { 
-			  quality: 50,
-			  sourceType: Camera.PictureSourceType.CAMERA,
-        destinationType: Camera.DestinationType.FILE_URI,
-        mediaType: Camera.mediaType.PICTURE,
-        encodingType: Camera.EncodingType.JPEG,
-        targetWidth: 300,
-        targetHeight: 400
-		  });
-  
-	  });
-  
-	  //Use from Library
-	  document.querySelector("#usePicture").addEventListener("touchend", function() {
-		  navigator.camera.getPicture(onSuccess, onFail, { 
-			  quality: 50,
-			  sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-			  destinationType: Camera.DestinationType.FILE_URI
-		  });
-  
-	  });
-  
+
+app.on('pageInit', function () {
+  init();
+});
+ app.emit('myCustomEvent');
+
+app.on('myCustomEvent', function () {
+  init();
+});
+
+// document.addEventListener("deviceready", init, false);
+function init() {
+
+  function onSuccess(imageData) {
+    console.log('success');
+    var image = document.getElementById('myImage');
+    image.src = imageData;
   }
+
+  function onFail(message) {
+    navigator.notification.alert(
+      message, null, "Camera Failure");
+  }
+
+  //Use from Camera
+  takePicture.addEventListener("touchend", function () {
+    console.log("Rod here in");
+    navigator.camera.getPicture(onSuccess, onFail, {
+      quality: 50,
+      sourceType: Camera.PictureSourceType.CAMERA,
+      destinationType: Camera.DestinationType.FILE_URI,
+      mediaType: Camera.mediaType.PICTURE,
+      encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 300,
+      targetHeight: 400
+    });
+
+  });
+
+  //Use from Library
+  document.querySelector("#usePicture").addEventListener("touchend", function () {
+    navigator.camera.getPicture(onSuccess, onFail, {
+      quality: 50,
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: Camera.DestinationType.FILE_URI
+    });
+
+  });
+
+}
   // ======================================================================
