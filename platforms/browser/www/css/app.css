@@ -8,7 +8,28 @@
   display: none;
 }
 
-/* NavBar Color ================================================= */
+/* Responsive Images==================================== */
+img{
+  max-width: 100%;
+  margin: auto;
+  height: auto;
+}
+
+
+/* Typography ========================================== */
+*{
+  font-family: 'belleza',serif;
+}
+h6
+.volt-name{
+  font-family: 'ubuntu',sans-serif;
+}
+.volt-name{
+  font-weight: bold;
+}
+
+
+/* NavBar Color ======================================= */
 .navbar-inner{
   background-color: white;
 }
@@ -40,10 +61,125 @@
   font-weight: bold;
   text-align: left;
 }
+
+
+/* Logo ===================================== */
 .logo{
   width: 95px;
   height: 95px;
 }
+.logo-img{
+  text-align: center;
+}
+
+
+/* SignIn ====================================== */
+.form-tab-active{
+  font-weight: 700;
+  color: #f15a22!important;
+  border-bottom: 1px solid gray;
+}
+.form-tab-inactive{
+  color: gray!important;
+}
+.login-header{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.box .inputBox{
+  position: relative;
+}
+.box .inputBox input{
+  width: 93%;
+  height: 3rem;
+  padding: 0.625rem 10px;
+  font-size: 1rem;
+  margin-bottom: 1.75rem;
+  border: 1px solid #ccc;
+  background: transparent;
+  border-radius: 4px;
+}
+.box .inputBox label{
+  position: absolute;
+  top: 0;
+  left: 10px;
+  padding: 0.625rem 0;
+  font-size: 1rem;
+  color: grey;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.box .inputBox input:focus ~ label,
+.box .inputBox input:valid ~ label,
+.box .inputBox input:not([value=""])
+~ label{
+  top: -1.125rem;
+  left: 10px;
+  color: #f15a22;
+  font-size: 0.75rem;
+  background-color: white;
+  height: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.box .inputBox input:focus{
+  outline: none;
+  border: 2px solid #f15a22;
+}
+.box input[type="submit"]{
+  border: none;
+  outline: none;
+  color: #fff;
+  height: 2rem;
+  background-color: #f15a22;
+  padding: 0 1.5rem;
+  cursor: pointer;
+  border-radius: 0.312rem;
+  font-size: 1rem;
+}
+.box input[type="submit"]:hover{
+  background-color: #f55014;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+.inputBox input[type="password"]{
+  margin-bottom: 0;
+}
+.inputBox p{
+  margin:.25rem 1rem 1rem 0;
+}
+
+
+/* Sign-Up ==================================== */
+.sign-up-block{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: .5rem;
+  padding: 0!important;
+}
+.sign-up-card{
+  width: 150px;
+  height: 160px;
+  border: 1px solid gray;
+}
+.sign-up-card-inner{
+  padding: .5rem;
+
+}
+.sign-up-card-inner img{
+  width:120px;
+  height: 100px;
+  padding: 0 .5rem;
+}
+.sign-up-as{
+  text-align: center;
+  color: #f15a22;
+}
+
+
+/* Seeker - Home ======================================= */
+
+/* Profile ==================================== */
 .image-about{
   width: 150px;
   height: 150px;
@@ -60,6 +196,8 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: .75rem;
 }
+
+/* Happy Wall ====================================== */
 .feedback-list li{
   display: grid;
   grid-template-columns: .25fr 1fr;
@@ -82,6 +220,7 @@
   text-align: center;
   margin-top: 4rem;
 }
+
 /* Text Me button ==================================== */
 .md .button.button-outline{
   border:1px solid #f15a22;
@@ -127,7 +266,7 @@
     text-align: center;
     border-radius: 50%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
+}
   
 
 .main-profile{
@@ -150,12 +289,7 @@
 
 
 
-
-
-
-
-
-/* Chat Css */
+/* Chat Css ============================================ */
 
 .messages {
   flex-grow: 1;
@@ -191,13 +325,13 @@
   background: #aea;
 }
 
-
 .footer {
   line-height: 76px;
   border-top: 1px solid rgba(156, 172, 172, 0.2);
   display: flex;
   flex-shrink: 0;
 }
+
 input {
   height: 76px;
   border: none;
@@ -208,6 +342,7 @@ input {
   color:#777;
   z-index: 10;
 }
+
 .send_button {
   border: none;
   background: #eee;

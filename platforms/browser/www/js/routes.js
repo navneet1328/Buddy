@@ -20,10 +20,6 @@ routes = [
     componentUrl: './pages/buddy-zone.html',
   },
   {
-    path: '/product/:id/',
-    componentUrl: './pages/product.html',
-  },
-  {
     path: '/profile/',
     url: './pages/profile.html',
   },
