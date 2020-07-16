@@ -15,10 +15,33 @@
   <link rel="stylesheet" href="../css/icons.css">
   <link rel="stylesheet" href="../css/app.css">
 </head>
+<script>
+
+function profile_updateBtn(){
+
+  var user = firebase.auth().currentUser;
+        user.updateProfile({
+        profileImage: "https://example.com/jane-q-user/profile.jpg",
+        profileName: "Navneet",
+        profileEmail: "navneet@gmail.com",
+        profilePhone: "6048474849",
+        profileGender: "Female",
+        profileDob:"28-06-1993",
+        profileBio:"hi! I am developer..."
+}).then(function() {
+  console.log("Update Successfully")
+  // Update successful.
+}).catch(function(error) {
+  // An error happened.
+  console.log("Error");
+});
+
+
+
+}
+
+</script>
 <body>
-
-
-
 <div class="page" data-name="profile">
 
   <div class="navbar">
@@ -76,7 +99,7 @@
             <div class="item-inner">
               <div class="item-title item-label">Name</div>
               <div class="item-input-wrap">
-                <input type="text" placeholder="Your name"/>
+                <input id="profile_name" type="text" placeholder="Your name"/>
               </div>
             </div>
           </div>
@@ -86,7 +109,7 @@
             <div class="item-inner">
               <div class="item-title item-label">E-mail</div>
               <div class="item-input-wrap">
-                <input type="email" placeholder="E-mail"/>
+                <input id="profile_email" type="email" placeholder="E-mail"/>
               </div>
             </div>
           </div>
@@ -96,7 +119,7 @@
             <div class="item-inner">
               <div class="item-title item-label">Password</div>
               <div class="item-input-wrap">
-                <input type="password" placeholder="Password"/>
+                <input id="profile_password" type="password" placeholder="Password"/>
               </div>
             </div>
           </div>
@@ -106,7 +129,7 @@
             <div class="item-inner">
               <div class="item-title item-label">Phone</div>
               <div class="item-input-wrap">
-                <input type="tel" placeholder="Phone"/>
+                <input id="profile_phone" type="tel" placeholder="Phone"/>
               </div>
             </div>
           </div>
@@ -129,7 +152,7 @@
             <div class="item-inner">
               <div class="item-title item-label">Birth date</div>
               <div class="item-input-wrap">
-                <input type="date" placeholder="Birth day" value="2014-04-30"/>
+                <input id="profile_dob" type="date" placeholder="Birthday" value="2014-04-30"/>
               </div>
             </div>
           </div>
@@ -139,7 +162,7 @@
             <div class="item-inner">
               <div class="item-title item-label">Bio</div>
               <div class="item-input-wrap">
-                <textarea placeholder="Bio"></textarea>
+                <textarea id="profile_bio" placeholder="Bio"></textarea>
               </div>
             </div>
           </div>
@@ -147,7 +170,7 @@
       </ul>
       <div class="block">
         <div class="row">
-            <button class="col button button-fill button-round">Update</button>
+            <button onclick="profile_updateBtn()" class="col button button-fill button-round">Update</button>
         </div>
       </div>
     </form>
