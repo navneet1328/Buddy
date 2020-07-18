@@ -1,5 +1,9 @@
 /* Your app styles here */
 
+body{
+  margin: 0;
+  padding: 0;
+}
 
 .ios .tabbar-labels .tab-link:not(.tab-link-active) .icon-ios-fill {
   display: none;
@@ -74,15 +78,16 @@ h6,
 
 
 /* SignIn ====================================== */
-.form-tab-active{
+.tab-link-active{
   font-weight: 700;
-  color: #f15a22!important;
   border-bottom: 1px solid gray;
 }
-.form-tab-inactive{
-  color: gray!important;
+
+.md a {
+  color: #f15a22;
 }
-.login-header{
+
+  .login-header{
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -91,7 +96,7 @@ h6,
   position: relative;
 }
 .box .inputBox input{
-  width: 93%;
+  width: 100%;
   height: 3rem;
   padding: 0.625rem 10px;
   font-size: 1rem;
@@ -127,10 +132,17 @@ h6,
   outline: none;
   border: 2px solid #f15a22;
 }
+
+.md .button.button-outline {
+  border: 2px solid #f15a22 !important;
+  color: #000 !important;
+  font-size: .75rem !important;
+}
 .box input[type="submit"]{
   border: none;
   outline: none;
   color: #fff;
+  float: right;
   height: 2rem;
   background-color: #f15a22;
   padding: 0 1.5rem;
@@ -156,11 +168,15 @@ h6,
   grid-template-columns: 1fr 1fr;
   grid-gap: .5rem;
   padding: 0!important;
+  margin: 3% 0 3% 0  !important;
 }
 .sign-up-card{
   width: 150px;
   height: 160px;
   border: 1px solid gray;
+}
+.sign-up-card:hover{
+  background-color: bisque;
 }
 .sign-up-card-inner{
   padding: .5rem;
@@ -382,9 +398,16 @@ h6,
   word-break: break-word;  /* this will break long words e.g. urls */   
   box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
 }
+
+.mine .message__bubble {
+  background: #f15a22c9 !important;
+  border-bottom-left-radius: 20px;
+  
+}
+
 .theirs .message__bubble {
-  background: #6363bf;
-  color: white;
+  background: #f5f5f5;
+  border-bottom-right-radius: 20px;
 }
 .mine .message__bubble {
   background: #aea;
@@ -410,16 +433,19 @@ input {
 
 .send_button {
   border: none;
-  background: #eee;
-  color: black;
-  border-radius:  0 0 5px 0 ;
-  padding: 0 25px;
-  height: 100%;
-  font-size: 16px;
-  box-shadow: none;
-  z-index: 10;
+  background: #fff;
+  color: #f15a22;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  margin-right: 20px;
 }
 
+.message_type{
+  height: 50px;
+  border-radius: 50px;
+  flex-grow: 1;
+  border: 1px solid gray;
+}
 
 
 
@@ -449,4 +475,11 @@ input {
 }
 
 
-
+.footer{
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  margin-left: 15px;
+  padding: 5px 0 5px 0;
+  width: 100%;
+}

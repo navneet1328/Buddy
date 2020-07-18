@@ -77,6 +77,14 @@ var settingsView = app.views.create('#view-profile', {
 
 // Camera ==============================================================
 
+
+// $$('.popover-links').on('popover:open', function (e) {
+// 	console.log('popover open');
+//   });
+//   $$('.popover-links').on('popover:opened', function (e) {
+// 	console.log(' popover opened');
+//   });
+
 app.on('pageInit', function () {
   init();
 });
@@ -86,28 +94,44 @@ app.on('myCustomEvent', function () {
   init();
 });
 
-// Search Hide on Scroll ===============================================
+// document.addEventListener("deviceready", init, false);
+function init() {
 
-// var prevScrollpos = window.pageYOffset;
-// window.onscroll = function() {
-// var currentScrollPos = window.pageYOffset;
-//   if (prevScrollpos > currentScrollPos) {
-//     document.getElementById("searchbar").style.top = "0";
-//   } else {
-//     document.getElementById("searchbar").style.top = "-50px";
-//   }
-//   prevScrollpos = currentScrollPos;
-// }
+  function onSuccess(imageData) {
+    console.log('success');
+    var image = document.getElementById('myImage');
+    image.src = imageData;
+  }
 
-// create searchbar
-// var searchbar = app.searchbar.create({
-//   // alert("hello");
-//   el: '.searchbar',
-//   searchContainer: '.buddyList',
-//   searchIn: '.item-title',
-//   on: {
-//     search(sb, query, previousQuery) {
-//       console.log(query, previousQuery);
-//     }
-//   }
-// });
+  function onFail(message) {
+    navigator.notification.alert(
+      message, null, "Camera Failure");
+  }
+
+  //Use from Camera
+  takePicture.addEventListener("touchend", function () {
+    console.log("Rod here in");
+    navigator.camera.getPicture(onSuccess, onFail, {
+      quality: 50,
+      sourceType: Camera.PictureSourceType.CAMERA,
+      destinationType: Camera.DestinationType.FILE_URI,
+      mediaType: Camera.mediaType.PICTURE,
+      encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 300,
+      targetHeight: 400
+    });
+
+  });
+
+  //Use from Library
+  document.querySelector("#usePicture").addEventListener("touchend", function () {
+    navigator.camera.getPicture(onSuccess, onFail, {
+      quality: 50,
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: Camera.DestinationType.FILE_URI
+    });
+
+  });
+
+}
+  // ======================================================================

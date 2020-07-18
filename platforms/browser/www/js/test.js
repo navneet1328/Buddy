@@ -22,29 +22,18 @@ function init() {
   }
 
   //Use from Camera
-  document.querySelector("#takePicture").addEventListener("touchend", function () {
-      console.log("BK here in");
-    navigator.camera.getPicture(onSuccess, onFail, {
-      quality: 50,
-      sourceType: Camera.PictureSourceType.CAMERA,
-      destinationType: Camera.DestinationType.FILE_URI,
-      mediaType:0,
-      encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 300,
-      targetHeight: 400
-    });
+  // takePicture.addEventListener("touchend", function () {
+  //   console.log("Rod here in");
+  //   navigator.camera.getPicture(onSuccess, onFail, {
+  //     quality: 50,
+  //     sourceType: Camera.PictureSourceType.CAMERA,
+  //     destinationType: Camera.DestinationType.FILE_URI,
+  //     mediaType:0,
+  //     encodingType: Camera.EncodingType.JPEG,
+  //     targetWidth: 300,
+  //     targetHeight: 400
+  //   });
 
-    //Use from Library
-    document.querySelector("#usePicture").addEventListener("touchend", function () {
-    console.log("BK in library");
-
-    navigator.camera.getPicture(onSuccess, onFail, {
-      quality: 50,
-      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-      destinationType: Camera.DestinationType.FILE_URI
-    });
-
-  });
-  });
+  // });
 
 }
