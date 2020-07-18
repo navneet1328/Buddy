@@ -100,14 +100,14 @@ app.on('myCustomEvent', function () {
 // }
 
 // create searchbar
-var searchbar = app.searchbar.create({
-  // alert("hello");
-  el: '.searchbar',
-  searchContainer: '.buddyList',
-  searchIn: '.item-title',
-  on: {
-    search(sb, query, previousQuery) {
-      console.log(query, previousQuery);
-    }
-  }
-});
+// var searchbar = app.searchbar.create({
+//   // alert("hello");
+//   el: '.searchbar',
+//   searchContainer: '.buddyList',
+//   searchIn: '.item-title',
+//   on: {
+//     search(sb, query, previousQuery) {
+//       console.log(query, previousQuery);
+//     }
+//   }
+// });
