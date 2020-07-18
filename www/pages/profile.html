@@ -25,6 +25,35 @@
 
   <div class="page" data-name="profile" id="profile-page">
 
+<script>
+
+function profile_updateBtn(){
+
+  var user = firebase.auth().currentUser;
+        user.updateProfile({
+        profileImage: "https://example.com/jane-q-user/profile.jpg",
+        profileName: "Navneet",
+        profileEmail: "navneet@gmail.com",
+        profilePhone: "6048474849",
+        profileGender: "Female",
+        profileDob:"28-06-1993",
+        profileBio:"hi! I am developer..."
+}).then(function() {
+  console.log("Update Successfully")
+  // Update successful.
+}).catch(function(error) {
+  // An error happened.
+  console.log("Error");
+});
+
+
+
+}
+
+</script>
+<body>
+<div class="page" data-name="profile">
+
     <div class="navbar">
       <div class="navbar-inner sliding">
         <div class="left sliding">
@@ -123,6 +152,44 @@
                     <input type="password" placeholder="Confirm Password" />
                   </div>
                 </div>
+    <form class="list form-store-data" id="my-form">
+      <ul>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Name</div>
+              <div class="item-input-wrap">
+                <input id="profile_name" type="text" placeholder="Your name"/>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">E-mail</div>
+              <div class="item-input-wrap">
+                <input id="profile_email" type="email" placeholder="E-mail"/>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Password</div>
+              <div class="item-input-wrap">
+                <input id="profile_password" type="password" placeholder="Password"/>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Phone</div>
+              <div class="item-input-wrap">
+                <input id="profile_phone" type="tel" placeholder="Phone"/>
               </div>
             </li>
             <li>
@@ -322,6 +389,25 @@
                     <textarea placeholder="Bio"></textarea>
                   </div>
                 </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Birth date</div>
+              <div class="item-input-wrap">
+                <input id="profile_dob" type="date" placeholder="Birthday" value="2014-04-30"/>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="align-top">
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Bio</div>
+              <div class="item-input-wrap">
+                <textarea id="profile_bio" placeholder="Bio"></textarea>
               </div>
             </li>
           </ul>
@@ -331,6 +417,12 @@
             </div>
           </div>
         </form>
+        </li>
+      </ul>
+      <div class="block">
+        <div class="row">
+            <button onclick="profile_updateBtn()" class="col button button-fill button-round">Update</button>
+        </div>
       </div>
     </div>
 
