@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="utf-8">
 
-  <meta http-equiv="Content-Security-Policy"
-    content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="format-detection" content="telephone=no">
@@ -18,13 +15,6 @@
   <link rel="stylesheet" href="../css/icons.css">
   <link rel="stylesheet" href="../css/app.css">
 </head>
-
-<body>
-
-
-
-  <div class="page" data-name="profile" id="profile-page">
-
 <script>
 
 function profile_updateBtn(){
@@ -54,104 +44,54 @@ function profile_updateBtn(){
 <body>
 <div class="page" data-name="profile">
 
-    <div class="navbar">
-      <div class="navbar-inner sliding">
-        <div class="left sliding">
-          <img src="image/Buddy-logo.svg" width="90px" height="90px">
-        </div>
+  <div class="navbar">
+    <div class="navbar-inner sliding">
+      <div class="left sliding">
+        <img src="image/Buddy-logo.svg" width="90px" height="90px"> 
+      </div>
 
-        <div class="title sliding">Profile</div>
+      <div class="title sliding">Profile</div>
 
-        <div class="right-logo">
-          <img src="../image/Buddy-icon-logout.svg" class="logout" width="60px" height="50px">
-        </div>
+      <div class="right ">
+        <img src="image/dummy.jpg" class="image-cover"> 
       </div>
     </div>
+  </div>
+  
+  <div class="page-content">
 
-    <div class="page-content">
 
+    <div class="main-profile">
+      <img src="image/dummy.jpg" class="profile">
 
-      <div class="main-profile">
-        <img src="image/dummy.jpg" class="profile">
-      </div>
         <!-- <button  class="button-edit button-raised open-toast-callback">Edit Photo</button> -->
         <!-- <a class="link popover-open" href="#" data-popover=".popover-links">Edit Photo</a> -->
-        <div class="cameraBtn">
-          <div class="takePicture-wrapper">
-            <button id="takePicture" class="button button-outline">Take Picture</button>
-          </div>
-          <div class="usePicture-wrapper">
-            <button id="usePicture" class="button button-outline">Use Picture</button>
-          </div>
-          <div class="removePicture-wrapper">
-            <button id="removePicture" class="button button-outline">Remove Picture</button>
-          </div>
-        </div>
+        <button id="takePicture">Take Picture</button>
+      	<button id="usePicture">Use Picture</button>
 
-        <img id="myImage">
+	<img id="myImage">
     </div>
 
-        <!-- Popover ===================================================== -->
-        <!-- <div class="popover popover-links">
+<!-- Popover ===================================================== -->
+<!-- <div class="popover popover-links">
   <div class="popover-inner">
     <div class="list">
       <ul>
-        <li> -->
-        <!-- <a class="list-button item-link" href="#">TAKE PHOTO</a></li>
+        <li><a class="list-button item-link" href="#">TAKE PHOTO</a></li>
           <li><a class="list-button item-link" href="#">UPLOAD PHOTO</a></li>
-          <li><a class="list-button item-link" href="#">REMOVE</a></li>
-          <li><a class="list-button item-link" href="#">Link 4</a></li> -->
-
+          <li><a class="list-button item-link" href="#">REMOVE</a></li> -->
+          <!-- <li><a class="list-button item-link" href="#">Link 4</a></li> -->
         <!-- <li><button id="takePhoto" class="list-button item-link" href="#">TAKE PHOTO</button></li>
         <li><button id="uploadPhoto" class="list-button item-link" href="#">UPLOAD PHOTO</button></li>
-        <li><button class="list-button item-link" href="#">REMOVE</button></li>        -->
-        <!-- </ul>
+        <li><button class="list-button item-link" href="#">REMOVE</button></li> -->
+        <!-- <li><a class="list-button item-link" href="#">Link 4</a></li> -->
+      <!-- </ul>
     </div>
   </div>
 </div> -->
-        <!-- ============================================================= -->
+<!-- ============================================================= -->
 
 
-        <form class="list form-store-data" id="my-form">
-          <ul>
-            <li>
-              <div class="item-content item-input">
-                <div class="item-inner">
-                  <div class="item-title item-label">Name</div>
-                  <div class="item-input-wrap">
-                    <input type="text" placeholder="Your name" />
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="item-content item-input">
-                <div class="item-inner">
-                  <div class="item-title item-label">E-mail</div>
-                  <div class="item-input-wrap">
-                    <input type="email" placeholder="E-mail" />
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="item-content item-input">
-                <div class="item-inner">
-                  <div class="item-title item-label">Change Password</div>
-                  <div class="item-input-wrap">
-                    <input type="password" placeholder="Change Password" />
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="item-content item-input">
-                <div class="item-inner">
-                  <div class="item-title item-label">Confirm Password</div>
-                  <div class="item-input-wrap">
-                    <input type="password" placeholder="Confirm Password" />
-                  </div>
-                </div>
     <form class="list form-store-data" id="my-form">
       <ul>
         <li>
@@ -191,204 +131,19 @@ function profile_updateBtn(){
               <div class="item-input-wrap">
                 <input id="profile_phone" type="tel" placeholder="Phone"/>
               </div>
-            </li>
-            <li>
-              <div class="item-content item-input">
-                <div class="item-inner">
-                  <div class="item-title item-label">Major</div>
-                  <div class="item-input-wrap">
-                    <input type="text" placeholder="Your major" />
-                  </div>
-                </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Gender</div>
+              <div class="item-input-wrap">
+                <select>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
               </div>
-            </li>
-            </li>
-            <li>
-              <div class="item-content item-input">
-                <div class="item-inner">
-                  <div class="item-title item-label">Nationality</div>
-                  <div class="item-input-wrap">  
-                    <select name="nationality" id="nationality">
-                      <option value="">-- select one --</option>
-                      <option value="afghan">Afghan</option>
-                      <option value="albanian">Albanian</option>
-                      <option value="algerian">Algerian</option>
-                      <option value="american">American</option>
-                      <option value="andorran">Andorran</option>
-                      <option value="australian">Australian</option>
-                      <option value="austrian">Austrian</option>
-                      <option value="azerbaijani">Azerbaijani</option>
-                      <option value="bahamian">Bahamian</option>
-                      <option value="bahraini">Bahraini</option>
-                      <option value="bangladeshi">Bangladeshi</option>
-                      <option value="belgian">Belgian</option>
-                      <option value="belizean">Belizean</option>
-                      <option value="beninese">Beninese</option>
-                      <option value="bhutanese">Bhutanese</option>
-                      <option value="bolivian">Bolivian</option>
-                      <option value="bosnian">Bosnian</option>
-                      <option value="brazilian">Brazilian</option>
-                      <option value="british">British</option>
-                      <option value="bulgarian">Bulgarian</option>
-                      <option value="burkinabe">Burkinabe</option>
-                      <option value="burmese">Burmese</option>
-                      <option value="burundian">Burundian</option>
-                      <option value="cambodian">Cambodian</option>
-                      <option value="cameroonian">Cameroonian</option>
-                      <option value="canadian">Canadian</option>
-                      <option value="cape verdean">Cape Verdean</option>
-                      <option value="central african">Central African</option>
-                      <option value="chinese">Chinese</option>
-                      <option value="colombian">Colombian</option>
-                      <option value="cuban">Cuban</option>
-                      <option value="cypriot">Cypriot</option>
-                      <option value="czech">Czech</option>
-                      <option value="danish">Danish</option>
-                      <option value="djibouti">Djibouti</option>
-                      <option value="dominican">Dominican</option>
-                      <option value="dutch">Dutch</option>
-                      <option value="egyptian">Egyptian</option>
-                      <option value="emirian">Emirian</option>
-                      <option value="equatorial guinean">Equatorial Guinean</option>
-                      <option value="eritrean">Eritrean</option>
-                      <option value="estonian">Estonian</option>
-                      <option value="ethiopian">Ethiopian</option>
-                      <option value="fijian">Fijian</option>
-                      <option value="filipino">Filipino</option>
-                      <option value="finnish">Finnish</option>
-                      <option value="french">French</option>
-                      <option value="gabonese">Gabonese</option>
-                      <option value="gambian">Gambian</option>
-                      <option value="georgian">Georgian</option>
-                      <option value="german">German</option>
-                      <option value="ghanaian">Ghanaian</option>
-                      <option value="greek">Greek</option>
-                      <option value="guinea-bissauan">Guinea-Bissauan</option>
-                      <option value="guinean">Guinean</option>
-                      <option value="guyanese">Guyanese</option>
-                      <option value="haitian">Haitian</option>
-                      <option value="herzegovinian">Herzegovinian</option>
-                      <option value="honduran">Honduran</option>
-                      <option value="hungarian">Hungarian</option>
-                      <option value="icelander">Icelander</option>
-                      <option value="indian">Indian</option>
-                      <option value="indonesian">Indonesian</option>
-                      <option value="iranian">Iranian</option>
-                      <option value="iraqi">Iraqi</option>
-                      <option value="irish">Irish</option>
-                      <option value="israeli">Israeli</option>
-                      <option value="italian">Italian</option>
-                      <option value="ivorian">Ivorian</option>
-                      <option value="jamaican">Jamaican</option>
-                      <option value="japanese">Japanese</option>
-                      <option value="jordanian">Jordanian</option>
-                      <option value="kazakhstani">Kazakhstani</option>
-                      <option value="kenyan">Kenyan</option>
-                      <option value="kittian and nevisian">Kittian and Nevisian</option>
-                      <option value="kuwaiti">Kuwaiti</option>
-                      <option value="kyrgyz">Kyrgyz</option>
-                      <option value="laotian">Laotian</option>
-                      <option value="latvian">Latvian</option>
-                      <option value="lebanese">Lebanese</option>
-                      <option value="liberian">Liberian</option>
-                      <option value="libyan">Libyan</option>
-                      <option value="liechtensteiner">Liechtensteiner</option>
-                      <option value="lithuanian">Lithuanian</option>
-                      <option value="luxembourger">Luxembourger</option>
-                      <option value="macedonian">Macedonian</option>
-                      <option value="malagasy">Malagasy</option>
-                      <option value="malawian">Malawian</option>
-                      <option value="malaysian">Malaysian</option>
-                      <option value="maldivan">Maldivan</option>
-                      <option value="mauritanian">Mauritanian</option>
-                      <option value="mauritian">Mauritian</option>
-                      <option value="mexican">Mexican</option>
-                      <option value="micronesian">Micronesian</option>
-                      <option value="moldovan">Moldovan</option>
-                      <option value="monacan">Monacan</option>
-                      <option value="mongolian">Mongolian</option>
-                      <option value="namibian">Namibian</option>
-                      <option value="nauruan">Nauruan</option>
-                      <option value="nepalese">Nepalese</option>
-                      <option value="new zealander">New Zealander</option>
-                      <option value="ni-vanuatu">Ni-Vanuatu</option>
-                      <option value="nicaraguan">Nicaraguan</option>
-                      <option value="nigerien">Nigerien</option>
-                      <option value="north korean">North Korean</option>
-                      <option value="northern irish">Northern Irish</option>
-                      <option value="norwegian">Norwegian</option>
-                      <option value="omani">Omani</option>
-                      <option value="pakistani">Pakistani</option>
-                      <option value="palauan">Palauan</option>
-                      <option value="panamanian">Panamanian</option>
-                      <option value="papua new guinean">Papua New Guinean</option>
-                      <option value="paraguayan">Paraguayan</option>
-                      <option value="peruvian">Peruvian</option>
-                      <option value="polish">Polish</option>
-                      <option value="portuguese">Portuguese</option>
-                      <option value="qatari">Qatari</option>
-                      <option value="romanian">Romanian</option>
-                      <option value="russian">Russian</option>
-                      <option value="rwandan">Rwandan</option>
-                      <option value="saint lucian">Saint Lucian</option>
-                      <option value="salvadoran">Salvadoran</option>
-                      <option value="samoan">Samoan</option>
-                      <option value="san marinese">San Marinese</option>
-                      <option value="sao tomean">Sao Tomean</option>
-                      <option value="saudi">Saudi</option>
-                      <option value="scottish">Scottish</option>
-                      <option value="senegalese">Senegalese</option>
-                      <option value="serbian">Serbian</option>
-                      <option value="seychellois">Seychellois</option>
-                      <option value="sierra leonean">Sierra Leonean</option>
-                      <option value="singaporean">Singaporean</option>
-                      <option value="slovakian">Slovakian</option>
-                      <option value="slovenian">Slovenian</option>
-                      <option value="solomon islander">Solomon Islander</option>
-                      <option value="somali">Somali</option>
-                      <option value="south african">South African</option>
-                      <option value="south korean">South Korean</option>
-                      <option value="spanish">Spanish</option>
-                      <option value="sri lankan">Sri Lankan</option>
-                      <option value="sudanese">Sudanese</option>
-                      <option value="surinamer">Surinamer</option>
-                      <option value="swazi">Swazi</option>
-                      <option value="swedish">Swedish</option>
-                      <option value="swiss">Swiss</option>
-                      <option value="syrian">Syrian</option>
-                      <option value="taiwanese">Taiwanese</option>
-                      <option value="tajik">Tajik</option>
-                      <option value="tanzanian">Tanzanian</option>
-                      <option value="thai">Thai</option>
-                      <option value="togolese">Togolese</option>
-                      <option value="tongan">Tongan</option>
-                      <option value="trinidadian or tobagonian">Trinidadian or Tobagonian</option>
-                      <option value="tunisian">Tunisian</option>
-                      <option value="turkish">Turkish</option>
-                      <option value="tuvaluan">Tuvaluan</option>
-                      <option value="ugandan">Ugandan</option>
-                      <option value="ukrainian">Ukrainian</option>
-                      <option value="uruguayan">Uruguayan</option>
-                      <option value="uzbekistani">Uzbekistani</option>
-                      <option value="venezuelan">Venezuelan</option>
-                      <option value="vietnamese">Vietnamese</option>
-                      <option value="welsh">Welsh</option>
-                      <option value="yemenite">Yemenite</option>
-                      <option value="zambian">Zambian</option>
-                      <option value="zimbabwean">Zimbabwean</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li>
-              <div class="item-content item-input">
-                <div class="item-inner">
-                  <div class="item-title item-label">Bio</div>
-                  <div class="item-input-wrap">
-                    <textarea placeholder="Bio"></textarea>
-                  </div>
-                </div>
             </div>
           </div>
         </li>
@@ -409,14 +164,8 @@ function profile_updateBtn(){
               <div class="item-input-wrap">
                 <textarea id="profile_bio" placeholder="Bio"></textarea>
               </div>
-            </li>
-          </ul>
-          <div class="block">
-            <div class="row">
-              <button class="col button button-fill button-round" id="updateBtn">Update</button>
             </div>
           </div>
-        </form>
         </li>
       </ul>
       <div class="block">
@@ -424,11 +173,13 @@ function profile_updateBtn(){
             <button onclick="profile_updateBtn()" class="col button button-fill button-round">Update</button>
         </div>
       </div>
-    </div>
+    </form>
+  </div>
+</div>
 
-    <!-- Script for Framework 7 -->
-    <script type="text/javascript" src="../framework7/js/framework7.min.js"></script>
-    <script type="text/javascript" src="../js/app.js"></script>
+<!-- Script for Framework 7 -->
+<script type="text/javascript" src="../framework7/js/framework7.min.js"></script>
+<script type="text/javascript" src="../js/app.js"></script>
 
 
 
