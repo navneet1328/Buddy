@@ -9172,7 +9172,7 @@ textarea {
 }
 .md .item-input-focused .item-label,
 .md .item-input-focused .item-floating-label {
-  color: #2196f3;
+  color: z;
 }
 .md .item-input-focused .item-input-wrap:after,
 .md .input-focused:after {

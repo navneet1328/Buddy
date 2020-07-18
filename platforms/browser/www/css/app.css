@@ -16,17 +16,17 @@ body{
 img{
   max-width: 100%;
   margin: auto;
-  height: auto;
 }
 
 
 /* Typography ========================================== */
-*{
-  font-family: 'belleza',serif;
+.title,
+h1{
+  font-family: 'Libre Baskerville', serif;
 }
-h6
+h6,
 .volt-name{
-  font-family: 'ubuntu',sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 .volt-name{
   font-weight: bold;
@@ -193,9 +193,7 @@ h6
 }
 
 
-/* Seeker - Home ======================================= */
-
-/* Profile ==================================== */
+/* volt about ==================================== */
 .image-about{
   width: 150px;
   height: 150px;
@@ -209,16 +207,82 @@ h6
 }
 .about-body{
   margin: 0 1.5rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
   padding: .75rem;
 }
+
+/* Edit Profile ====================================== */
+#my-form{
+  margin: 1rem 8%;
+  /* border: 2px solid gray; */
+  border-radius: 2rem;
+  box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
+
+}
+#updateBtn{
+  margin: 1rem 0;
+}
+
+.md .list ul:after{
+  background-color: white;
+}
+.md .list ul:before{
+  background-color: white;
+}
+#profile-page li:nth-child(1) .item-content{
+  padding-top: 1rem;
+}
+.right-logo{
+  margin-right: 5%;
+  margin-top: 2%;
+}
+.cameraBtn{
+  display: flex;
+  justify-content: space-evenly;
+}
+#nationality{
+  width: 30%;
+}
+#nationality option{
+  padding-left: 1rem;
+}
+.input-focused{
+  height: 3px;
+  /* margin: 10% auto; */
+  color: #f15a22;
+}
+#profile-page .md .item-label{
+  font-size: 1rem;
+}
+.md .input-focused:after,
+.md .item-input-focused .item-input-wrap:after{
+  background: #f15a22!important;
+}
+.md .item-input-focused .item-label{
+  color: #f15a22;
+}
+.md .item-label{
+  font-size: 1rem!important;
+  padding: .25rem 0;
+}
+/* 
+#profile-page .smart-select-popover .popover-inner {
+  max-height: 10vh!important;
+} */
+/* .smart-select-popover .popover-inner {
+  max-height: 50px!important;
+} */
+/* .input-focused{
+  height: 100px!important;
+} */
 
 /* Happy Wall ====================================== */
 .feedback-list li{
   display: grid;
   grid-template-columns: .25fr 1fr;
   grid-gap: .5rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
+
   margin-top: 1rem;
   border-radius: 1rem;
 }
@@ -281,7 +345,8 @@ h6
     width: 200px;
     text-align: center;
     border-radius: 50%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
+
 }
   
 
@@ -381,6 +446,32 @@ input {
   flex-grow: 1;
   border: 1px solid gray;
 }
+
+/* Buddy Zone ============================================================ */
+#view-buddyzone .buddy-zone-image img{
+  border-radius: 10%;
+}
+
+#view-buddyzone .list li{
+  margin-bottom: 1rem;
+  box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
+  padding: .5rem 0;
+}
+#view-buddyzone .list li a{
+  border-top: 2px solid lightgray;
+  border-bottom: 2px solid lightgray;
+}
+
+#view-buddyzone .md .page>.searchbar:after{
+  background: white!important;
+}
+.md .page>.searchbar{
+  background-color: rgb(240, 240, 240);
+}
+.md .page>.navbar~.searchbar{
+  top:65px!important;
+}
+
 
 .footer{
   position: fixed;

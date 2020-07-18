@@ -1,0 +1,452 @@
+/* Your app styles here */
+
+
+.ios .tabbar-labels .tab-link:not(.tab-link-active) .icon-ios-fill {
+  display: none;
+}
+.ios .tabbar-labels .tab-link.tab-link-active .icon:not(.icon-ios-fill) {
+  display: none;
+}
+
+/* Responsive Images==================================== */
+img{
+  max-width: 100%;
+  margin: auto;
+}
+
+
+/* Typography ========================================== */
+.title,
+h1{
+  font-family: 'Libre Baskerville', serif;
+}
+h6,
+.volt-name{
+  font-family: 'Open Sans', sans-serif;
+}
+.volt-name{
+  font-weight: bold;
+}
+
+
+/* NavBar Color ======================================= */
+.navbar-inner{
+  background-color: white;
+}
+.title{
+  color: black;
+  text-align: center!important;
+}
+.img{
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+}
+.image-cover {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 20px;
+
+  object-fit: contain;
+  object-position: center top;
+  padding: 2px;
+  border: 2px solid #f15a22;
+}
+.navbar .title {
+  margin: 0 16px;
+  width: 100% !important;
+  font-family: cursive;
+  line-height: 1.2;
+  font-weight: bold;
+  text-align: left;
+}
+
+
+/* Logo ===================================== */
+.logo{
+  width: 95px;
+  height: 95px;
+}
+.logo-img{
+  text-align: center;
+}
+
+
+/* SignIn ====================================== */
+.form-tab-active{
+  font-weight: 700;
+  color: #f15a22!important;
+  border-bottom: 1px solid gray;
+}
+.form-tab-inactive{
+  color: gray!important;
+}
+.login-header{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.box .inputBox{
+  position: relative;
+}
+.box .inputBox input{
+  width: 93%;
+  height: 3rem;
+  padding: 0.625rem 10px;
+  font-size: 1rem;
+  margin-bottom: 1.75rem;
+  border: 1px solid #ccc;
+  background: transparent;
+  border-radius: 4px;
+}
+.box .inputBox label{
+  position: absolute;
+  top: 0;
+  left: 10px;
+  padding: 0.625rem 0;
+  font-size: 1rem;
+  color: grey;
+  pointer-events: none;
+  transition: 0.5s;
+}
+.box .inputBox input:focus ~ label,
+.box .inputBox input:valid ~ label,
+.box .inputBox input:not([value=""])
+~ label{
+  top: -1.125rem;
+  left: 10px;
+  color: #f15a22;
+  font-size: 0.75rem;
+  background-color: white;
+  height: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.box .inputBox input:focus{
+  outline: none;
+  border: 2px solid #f15a22;
+}
+.box input[type="submit"]{
+  border: none;
+  outline: none;
+  color: #fff;
+  height: 2rem;
+  background-color: #f15a22;
+  padding: 0 1.5rem;
+  cursor: pointer;
+  border-radius: 0.312rem;
+  font-size: 1rem;
+}
+.box input[type="submit"]:hover{
+  background-color: #f55014;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+.inputBox input[type="password"]{
+  margin-bottom: 0;
+}
+.inputBox p{
+  margin:.25rem 1rem 1rem 0;
+}
+
+
+/* Sign-Up ==================================== */
+.sign-up-block{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: .5rem;
+  padding: 0!important;
+}
+.sign-up-card{
+  width: 150px;
+  height: 160px;
+  border: 1px solid gray;
+}
+.sign-up-card-inner{
+  padding: .5rem;
+
+}
+.sign-up-card-inner img{
+  width:120px;
+  height: 100px;
+  padding: 0 .5rem;
+}
+.sign-up-as{
+  text-align: center;
+  color: #f15a22;
+}
+
+
+/* volt about ==================================== */
+.image-about{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 2rem 6rem;
+  margin-bottom: -3rem;
+  object-fit: contain;
+  object-position: center top;
+  padding: 2px;
+  border: 2px solid #f15a22;
+}
+.about-body{
+  margin: 0 1.5rem;
+  box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
+  padding: .75rem;
+}
+
+/* Edit Profile ====================================== */
+#my-form{
+  margin: 1rem 8%;
+  /* border: 2px solid gray; */
+  border-radius: 2rem;
+  box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
+
+}
+#updateBtn{
+  margin: 1rem 0;
+}
+
+.md .list ul:after{
+  background-color: white;
+}
+.md .list ul:before{
+  background-color: white;
+}
+#profile-page li:nth-child(1) .item-content{
+  padding-top: 1rem;
+}
+.right-logo{
+  margin-right: 5%;
+  margin-top: 2%;
+}
+.cameraBtn{
+  display: flex;
+  justify-content: space-evenly;
+}
+#nationality{
+  width: 30%;
+}
+#nationality option{
+  padding-left: 1rem;
+}
+.input-focused{
+  height: 3px;
+  /* margin: 10% auto; */
+  color: #f15a22;
+}
+#profile-page .md .item-label{
+  font-size: 1rem;
+}
+.md .input-focused:after,
+.md .item-input-focused .item-input-wrap:after{
+  background: #f15a22!important;
+}
+.md .item-input-focused .item-label{
+  color: #f15a22;
+}
+.md .item-label{
+  font-size: 1rem!important;
+  padding: .25rem 0;
+}
+/* 
+#profile-page .smart-select-popover .popover-inner {
+  max-height: 10vh!important;
+} */
+/* .smart-select-popover .popover-inner {
+  max-height: 50px!important;
+} */
+/* .input-focused{
+  height: 100px!important;
+} */
+
+/* Happy Wall ====================================== */
+.feedback-list li{
+  display: grid;
+  grid-template-columns: .25fr 1fr;
+  grid-gap: .5rem;
+    box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
+
+  margin-top: 1rem;
+  border-radius: 1rem;
+}
+.feedback-list ul{
+  padding: 0 1rem;
+}
+.feedback-list li img{
+  margin: 1rem auto;
+}
+.feedback{
+  margin: .5rem auto;
+}
+.happywall{
+  font-family: cursive;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+/* Text Me button ==================================== */
+.md .button.button-outline{
+  border:1px solid #f15a22;
+}
+.md .button{
+  color: #f15a22;
+  font-weight: bold;
+}
+.toolbar {
+  background: #f15a22 !important;
+}
+
+.volt-card {
+    background-image: url(../img/langara-logo.png);
+    height: 100px;
+    background-color: #f15a22;
+  }
+
+.button.button-fill{
+  background-color: #f15a22 !important;
+}
+
+.navbar {
+  height: 56px;
+  background: #ffffff !important;
+  color: #f15a22 !important;
+  font-size: 20px;
+  font-family: cursive;
+  font-weight: 800;
+}
+
+.flag-icon{
+  float: right;
+  margin-right: 10px;
+}
+
+.card-content{
+  padding: 3px;
+}
+
+.profile  {
+    width: 200px;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
+
+}
+  
+
+.main-profile{
+    text-align: center;
+    margin-top: 5%;  
+}
+
+.popup-open{
+  color: #000!important;
+}
+
+.thank-button{
+  background: #f15a22;
+  color: white !important;
+  width: 60%;
+  text-transform: none !important;
+  float: right;
+  margin-top: 10px;
+}
+
+
+
+/* Chat Css ============================================ */
+
+.messages {
+  flex-grow: 1;
+  padding: 20px 30px;
+  overflow: auto;
+  position: relative;
+}
+.message {
+  display: flex;
+  flex-direction: column;
+}
+.mine {
+  align-items: flex-end;
+}
+.theirs {
+  align-items: flex-start;
+}
+.message__name {
+  padding-top: 10px;
+  cursor: pointer; 
+}
+.message__bubble {
+  padding: 15px;
+  border-radius: 5px;
+  word-break: break-word;  /* this will break long words e.g. urls */   
+  box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
+}
+.theirs .message__bubble {
+  background: #6363bf;
+  color: white;
+}
+.mine .message__bubble {
+  background: #aea;
+}
+
+.footer {
+  line-height: 76px;
+  border-top: 1px solid rgba(156, 172, 172, 0.2);
+  display: flex;
+  flex-shrink: 0;
+}
+
+input {
+  height: 76px;
+  border: none;
+  flex-grow: 1;
+  padding: 0 15px;
+  font-size: 16px;
+  background: transparent;
+  color:#777;
+  z-index: 10;
+}
+
+.send_button {
+  border: none;
+  background: #eee;
+  color: black;
+  border-radius:  0 0 5px 0 ;
+  padding: 0 25px;
+  height: 100%;
+  font-size: 16px;
+  box-shadow: none;
+  z-index: 10;
+}
+
+
+
+
+/* Buddy Zone ============================================================ */
+#view-buddyzone .buddy-zone-image img{
+  border-radius: 10%;
+}
+
+#view-buddyzone .list li{
+  margin-bottom: 1rem;
+  box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
+  padding: .5rem 0;
+}
+#view-buddyzone .list li a{
+  border-top: 2px solid lightgray;
+  border-bottom: 2px solid lightgray;
+}
+
+#view-buddyzone .md .page>.searchbar:after{
+  background: white!important;
+}
+.md .page>.searchbar{
+  background-color: rgb(240, 240, 240);
+}
+.md .page>.navbar~.searchbar{
+  top:65px!important;
+}
+
+
+

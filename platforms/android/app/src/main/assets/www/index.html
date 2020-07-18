@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>Buddy</title>
+
+  <link rel="stylesheet" href="./framework7/css/framework7.min.css">
+  <link rel="stylesheet" href="./css/icons.css">
+  <link rel="stylesheet" href="./css/app.css">
+
+  <!-- Fonts  -->
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Open+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="logo-img">
+    <img src="./image/Buddy-logo.svg" alt="logo" style="width: 200px; height: 200px; margin: auto;">
+  </div>
+  <div class="view view-main tab tab-active">
+    <!-- Page, data-name contains page name which can be used in page callbacks -->
+    <div class="page">
+      <div class="card demo-card-header-pic">
+        <div class="card-header align-items-flex-end">
+          <div class="login-header">
+            <!-- Tab 1 -->
+            <a href="#" class="tab-link tab-link-active form-tab-active" data-tab=".tab1">SIGN IN</a>
+            <!-- Tab 2 -->
+            <a href="#" class="tab-link form-tab-inactive" data-tab=".tab2">SIGN UP</a>
+          </div>
+        </div>
+        <div class="card-content card-content-padding">
+          <div class="tabs tabs-top">
+
+            <!-- Tab 1 Content  -->
+            <div class="tab tab1 tab-active box">
+
+              <!-- Login Form -->
+
+              <form>
+                <div class="inputBox">
+                  <input type="email" name="email" required onkeyup="this.setAttribute('value',this.value);" value="">
+                  <label for="email">Username</label>
+                </div>
+                <div class="inputBox">
+                  <input type="password" name="pswd" required onkeyup="this.setAttribute('value',this.value);" value="">
+                  <label for="pswd">Password</label>
+                  <p>Fogot Password?</p>
+                </div>
+              </form>
+
+              <!-- Login Button - Navigating to Home Page -->
+              <input type="submit" name="sign-in" value="Sign In" onclick="window.location='tabs.html'">
+              <!-- <div class="col button button-fill button-round" onclick="window.location='tabs.html'"></div> -->
+            </div>
+
+            <!-- Tab 2 Content  -->
+            <div class="tab tab2">
+              <div class="block sign-up-block">
+                <!-- Volunteer Card -->
+                <div class="sign-up-card button-large button-raised volunteer-card">
+                  <!-- <div class="card-content "> -->
+                  <div class="sign-up-card-inner">
+                    <img src="./image/Buddy-icon-volunteer.svg" alt="volunteer-vector">
+                    <h3 class="sign-up-as">As Volunteer</h3>
+                  </div>
+                  <!-- </div> -->
+                  <!-- </div>   -->
+                </div>
+
+                <!-- Seeker Card -->
+                <div class="sign-up-card button-large button-raised seeker-card">
+                  <!-- <div class="card-content "> -->
+                  <div class="sign-up-card-inner" onclick="window.location='./pages/sign-up.html'">
+                    <img src="./image/Buddy-icon-seeker.svg" alt="seeker-vector">
+                    <h3 class="sign-up-as">As Seeker</h3>
+                  </div>
+                </div>
+                <!-- </div>   -->
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+
+
+
+
+  <script src="./framework7/js/framework7.min.js"></script>
+  <!-- Your custom app scripts -->
+  <script src="./js/app.js"></script>
+
+</body>
+
+</html>
