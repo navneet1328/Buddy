@@ -22,8 +22,8 @@ function init() {
   }
 
   //Use from Camera
-  takePicture.addEventListener("touchend", function () {
-    console.log("Rod here in");
+  document.querySelector("#takePicture").addEventListener("touchend", function () {
+      console.log("BK here in");
     navigator.camera.getPicture(onSuccess, onFail, {
       quality: 50,
       sourceType: Camera.PictureSourceType.CAMERA,
@@ -34,6 +34,17 @@ function init() {
       targetHeight: 400
     });
 
+    //Use from Library
+    document.querySelector("#usePicture").addEventListener("touchend", function () {
+    console.log("BK in library");
+
+    navigator.camera.getPicture(onSuccess, onFail, {
+      quality: 50,
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: Camera.DestinationType.FILE_URI
+    });
+
+  });
   });
 
 }
