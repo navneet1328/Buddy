@@ -447,6 +447,8 @@ input {
   border: 1px solid gray;
 }
 
+
+
 /* Buddy Zone ============================================================ */
 #view-buddyzone .buddy-zone-image img{
   border-radius: 10%;
@@ -481,4 +483,3 @@ input {
   padding: 5px 0 5px 0;
   width: 100%;
 }
-
