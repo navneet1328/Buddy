@@ -2,77 +2,113 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
+    <meta charset="utf-8">
 
-  <meta http-equiv="Content-Security-Policy"
-    content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
-  <title>Buddy</title>
-
-  <link rel="stylesheet" href="../framework7/css/framework7.min.css">
-  <link rel="stylesheet" href="../css/icons.css">
-  <link rel="stylesheet" href="../css/app.css">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>Buddy</title>
+  
+    <link rel="stylesheet" href="../framework7/css/framework7.min.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/app.css">
+    
+	<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-firestore.js"></script>
 </head>
-
-<body>
-
-
-
-  <div class="page" data-name="profile" id="profile-page">
-
 <script>
 
-function profile_updateBtn(){
+  var userrID = localStorage.getItem("userId");
+  console.log("Profileiddd-----",userrID);
+  //initialize firebase
+  if (typeof firebase === 'undefined') {
+    alert('Firebase SDK not detected. You must include it before initialization');
+  }
 
-  var user = firebase.auth().currentUser;
-        user.updateProfile({
-        profileImage: "https://example.com/jane-q-user/profile.jpg",
-        profileName: "Navneet",
-        profileEmail: "navneet@gmail.com",
-        profilePhone: "6048474849",
-        profileGender: "Female",
-        profileDob:"28-06-1993",
-        profileBio:"hi! I am developer..."
-}).then(function() {
-  console.log("Update Successfully")
-  // Update successful.
-}).catch(function(error) {
-  // An error happened.
-  console.log("Error");
-});
+  firebase.initializeApp({
+      apiKey: "AIzaSyBgkBUh3Jxkya6NW0CcKh0ZkV3tq70Nd6c",
+      authDomain: "buddy.com",
+      databaseURL: "https://buddy-bbde5.firebaseio.com/",
+      projectId: "buddy-bbde5",
+      storageBucket: "gs://buddy-bbde5.appspot.com/",
+      messagingSenderId: "905442756005",
+      appId: "1:905442756005:android:6179c8baffe6aab326944c" 
+      
+  
+  });
 
+    //this is the name of our db collection to store chat messages 
+    const PROFILE_DB = 'profile_seeker';
+      
+    const db = firebase.firestore(); //get a handle to firestore DB
 
+    function updateProfile() {
+       
+      var profileName = document.getElementById('profileName').value;
+      var profileEmail = document.getElementById('profileEmail').value;
+      var profileChangePassword = document.getElementById('profileChangePassword').value;
+      var profileBio = document.getElementById('profileBio').value;
+      console.log("ProfileName " + profileName);
+      if(profileName=="" || profileBio=="")
+      {
+       
+      console.log("ProfileNameBio " + "If");
+        return;
+      }
+      else
+      {
+        
+      console.log("ProfileName " + "Else");
+        var myObject = {
+          
+        profileName: profileName,
+        profileEmail:profileEmail,
+        profileChangePassword: profileChangePassword,
+        profileBio: profileBio,
+        userrID:userrID,
+      }
 
-}
+       db.collection(PROFILE_DB).add(myObject)
+          .then(function (docRef) { 
+            //if add is successful
+            console.log("Successfully Added " + docRef.id);
+            //window.location="./tabs.html";
+          })
+          .catch(function (error) {  //if add fails
+            console.logError("Fails: " + error);
+          });
+    
+      }
+      
+    }
 
 </script>
 <body>
-<div class="page" data-name="profile">
+
+  <div class="page" data-name="profile" id="profile-page">
 
     <div class="navbar">
-      <div class="navbar-inner sliding">
-        <div class="left sliding">
-          <img src="image/Buddy-logo.svg" width="90px" height="90px">
-        </div>
-
-        <div class="title sliding">Profile</div>
-
-        <div class="right-logo">
-          <img src="../image/Buddy-icon-logout.svg" class="logout" width="60px" height="50px">
+        <div class="navbar-inner sliding">
+          <div class="left sliding">
+            <img src="../image/Buddy-logo.svg" width="90px" height="90px"> 
+          </div>
+    
+          <div class="title sliding">Profile</div>
+    
+          <div class="right ">
+            <img src="../image/dummy.jpg" class="image-cover"> 
+          </div>
         </div>
       </div>
-    </div>
 
     <div class="page-content">
 
 
       <div class="main-profile">
-        <img src="image/dummy.jpg" class="profile">
+        <img src="../image/dummy.jpg" class="profile">
       </div>
         <!-- <button  class="button-edit button-raised open-toast-callback">Edit Photo</button> -->
         <!-- <a class="link popover-open" href="#" data-popover=".popover-links">Edit Photo</a> -->
@@ -88,30 +124,6 @@ function profile_updateBtn(){
           </div>
         </div>
 
-        <!-- <img id="myImage">
-    </div> -->
-
-        <!-- Popover ===================================================== -->
-        <!-- <div class="popover popover-links">
-  <div class="popover-inner">
-    <div class="list">
-      <ul>
-        <li> -->
-        <!-- <a class="list-button item-link" href="#">TAKE PHOTO</a></li>
-          <li><a class="list-button item-link" href="#">UPLOAD PHOTO</a></li>
-          <li><a class="list-button item-link" href="#">REMOVE</a></li>
-          <li><a class="list-button item-link" href="#">Link 4</a></li> -->
-
-        <!-- <li><button id="takePhoto" class="list-button item-link" href="#">TAKE PHOTO</button></li>
-        <li><button id="uploadPhoto" class="list-button item-link" href="#">UPLOAD PHOTO</button></li>
-        <li><button class="list-button item-link" href="#">REMOVE</button></li>        -->
-        <!-- </ul>
-    </div>
-  </div>
-</div> -->
-        <!-- ============================================================= -->
-
-
         <form class="list form-store-data" id="my-form">
           <ul>
             <li>
@@ -119,7 +131,7 @@ function profile_updateBtn(){
                 <div class="item-inner">
                   <div class="item-title item-label">Name</div>
                   <div class="item-input-wrap">
-                    <input type="text" placeholder="Your name" />
+                    <input id="profileName" type="text" placeholder="Your name" required validate data-error-message="Enter valid name."/>
                   </div>
                 </div>
               </div>
@@ -129,7 +141,7 @@ function profile_updateBtn(){
                 <div class="item-inner">
                   <div class="item-title item-label">E-mail</div>
                   <div class="item-input-wrap">
-                    <input type="email" placeholder="E-mail" />
+                    <input id="profileEmail" type="email" placeholder="E-mail" validate data-error-message="Enter valid email." />
                   </div>
                 </div>
               </div>
@@ -139,7 +151,7 @@ function profile_updateBtn(){
                 <div class="item-inner">
                   <div class="item-title item-label">Change Password</div>
                   <div class="item-input-wrap">
-                    <input type="password" placeholder="Change Password" />
+                    <input id="profileChangePassword" type="password" placeholder="Change Password" data-error-message="Enter only numbers." />
                   </div>
                 </div>
               </div>
@@ -152,44 +164,6 @@ function profile_updateBtn(){
                     <input type="password" placeholder="Confirm Password" />
                   </div>
                 </div>
-    <form class="list form-store-data" id="my-form">
-      <ul>
-        <li>
-          <div class="item-content item-input">
-            <div class="item-inner">
-              <div class="item-title item-label">Name</div>
-              <div class="item-input-wrap">
-                <input id="profile_name" type="text" placeholder="Your name"/>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="item-content item-input">
-            <div class="item-inner">
-              <div class="item-title item-label">E-mail</div>
-              <div class="item-input-wrap">
-                <input id="profile_email" type="email" placeholder="E-mail"/>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="item-content item-input">
-            <div class="item-inner">
-              <div class="item-title item-label">Password</div>
-              <div class="item-input-wrap">
-                <input id="profile_password" type="password" placeholder="Password"/>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="item-content item-input">
-            <div class="item-inner">
-              <div class="item-title item-label">Phone</div>
-              <div class="item-input-wrap">
-                <input id="profile_phone" type="tel" placeholder="Phone"/>
               </div>
             </li>
             <li>
@@ -386,43 +360,18 @@ function profile_updateBtn(){
                 <div class="item-inner">
                   <div class="item-title item-label">Bio</div>
                   <div class="item-input-wrap">
-                    <textarea placeholder="Bio"></textarea>
+                    <textarea id="profileBio" placeholder="Bio" required validate data-error-message="Enter bio."></textarea>
                   </div>
                 </div>
-            </div>
-          </div>
-        </li>
-        <li>
-          <div class="item-content item-input">
-            <div class="item-inner">
-              <div class="item-title item-label">Birth date</div>
-              <div class="item-input-wrap">
-                <input id="profile_dob" type="date" placeholder="Birthday" value="2014-04-30"/>
-              </div>
-            </div>
-          </div>
-        </li>
-        <li class="align-top">
-          <div class="item-content item-input">
-            <div class="item-inner">
-              <div class="item-title item-label">Bio</div>
-              <div class="item-input-wrap">
-                <textarea id="profile_bio" placeholder="Bio"></textarea>
               </div>
             </li>
           </ul>
           <div class="block">
             <div class="row">
-              <button class="col button button-fill button-round" id="updateBtn">Update</button>
+              <button class="col button button-fill button-round" id="updateBtn" onclick="updateProfile()">Update</button>
             </div>
           </div>
         </form>
-        </li>
-      </ul>
-      <div class="block">
-        <div class="row">
-            <button onclick="profile_updateBtn()" class="col button button-fill button-round">Update</button>
-        </div>
       </div>
     </div>
 

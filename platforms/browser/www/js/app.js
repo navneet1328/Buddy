@@ -2,6 +2,7 @@
 var $$ = Dom7;
 var routes;
 
+
 // Framework7 App main instance
 var app = new Framework7({
   root: '#app', // App root element

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>Buddy</title>
+
+  <link rel="stylesheet" href="../framework7/css/framework7.min.css">
+  <link rel="stylesheet" href="../css/icons.css">
+  <link rel="stylesheet" href="../css/app.css">
+</head>
+<script>
+
+function profile_updateBtn(){
+
+  var user = firebase.auth().currentUser;
+        user.updateProfile({
+        profileImage: "https://example.com/jane-q-user/profile.jpg",
+        profileName: "Navneet",
+        profileEmail: "navneet@gmail.com",
+        profilePhone: "6048474849",
+        profileGender: "Female",
+        profileDob:"28-06-1993",
+        profileBio:"hi! I am developer..."
+}).then(function() {
+  console.log("Update Successfully")
+  // Update successful.
+}).catch(function(error) {
+  // An error happened.
+  console.log("Error");
+});
+
+}
+
+</script>
+<body>
+<div class="page" data-name="profile">
+
+  <div class="navbar">
+    <div class="navbar-inner sliding">
+      <div class="left sliding">
+        <img src="image/Buddy-logo.svg" width="90px" height="90px"> 
+      </div>
+
+      <div class="title sliding">Profile</div>
+
+      <div class="right ">
+        <img src="image/dummy.jpg" class="image-cover"> 
+      </div>
+    </div>
+  </div>
+  
+  <div class="page-content">
+
+
+    <div class="main-profile">
+      <img src="image/dummy.jpg" class="profile">
+
+        <!-- <button  class="button-edit button-raised open-toast-callback">Edit Photo</button> -->
+        <!-- <a class="link popover-open" href="#" data-popover=".popover-links">Edit Photo</a> -->
+        <button id="takePicture">Take Picture</button>
+      	<button id="usePicture">Use Picture</button>
+
+	<img id="myImage">
+    </div>
+
+<!-- Popover ===================================================== -->
+<!-- <div class="popover popover-links">
+  <div class="popover-inner">
+    <div class="list">
+      <ul>
+        <li><a class="list-button item-link" href="#">TAKE PHOTO</a></li>
+          <li><a class="list-button item-link" href="#">UPLOAD PHOTO</a></li>
+          <li><a class="list-button item-link" href="#">REMOVE</a></li> -->
+          <!-- <li><a class="list-button item-link" href="#">Link 4</a></li> -->
+        <!-- <li><button id="takePhoto" class="list-button item-link" href="#">TAKE PHOTO</button></li>
+        <li><button id="uploadPhoto" class="list-button item-link" href="#">UPLOAD PHOTO</button></li>
+        <li><button class="list-button item-link" href="#">REMOVE</button></li> -->
+        <!-- <li><a class="list-button item-link" href="#">Link 4</a></li> -->
+      <!-- </ul>
+    </div>
+  </div>
+</div> -->
+<!-- ============================================================= -->
+
+
+    <form class="list form-store-data" id="my-form">
+      <ul>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Name</div>
+              <div class="item-input-wrap">
+                <input id="profile_name" type="text" placeholder="Your name"/>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">E-mail</div>
+              <div class="item-input-wrap">
+                <input id="profile_email" type="email" placeholder="E-mail"/>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Password</div>
+              <div class="item-input-wrap">
+                <input id="profile_password" type="password" placeholder="Password"/>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Phone</div>
+              <div class="item-input-wrap">
+                <input id="profile_phone" type="tel" placeholder="Phone"/>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Gender</div>
+              <div class="item-input-wrap">
+                <select>
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Birth date</div>
+              <div class="item-input-wrap">
+                <input id="profile_dob" type="date" placeholder="Birthday" value="2014-04-30"/>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="align-top">
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Bio</div>
+              <div class="item-input-wrap">
+                <textarea id="profile_bio" placeholder="Bio"></textarea>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="block">
+        <div class="row">
+            <button onclick="profile_updateBtn()" class="col button button-fill button-round">Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Script for Framework 7 -->
+<script type="text/javascript" src="../framework7/js/framework7.min.js"></script>
+<script type="text/javascript" src="../js/app.js"></script>
+
+
+
+</body>
+
+</html>

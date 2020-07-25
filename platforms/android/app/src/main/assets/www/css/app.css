@@ -12,21 +12,24 @@ body{
   display: none;
 }
 
+.volt-info {
+  bottom: 50px;
+}
 /* Responsive Images==================================== */
 img{
   max-width: 100%;
   margin: auto;
+  height: auto;
 }
 
 
 /* Typography ========================================== */
-.title,
-h1{
-  font-family: 'Libre Baskerville', serif;
+*{
+  font-family: 'belleza',serif;
 }
-h6,
+h6
 .volt-name{
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'ubuntu',sans-serif;
 }
 .volt-name{
   font-weight: bold;
@@ -193,7 +196,9 @@ h6,
 }
 
 
-/* volt about ==================================== */
+/* Seeker - Home ======================================= */
+
+/* Profile ==================================== */
 .image-about{
   width: 150px;
   height: 150px;
@@ -207,7 +212,7 @@ h6,
 }
 .about-body{
   margin: 0 1.5rem;
-  box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: .75rem;
 }
 
@@ -265,41 +270,6 @@ h6,
   font-size: 1rem!important;
   padding: .25rem 0;
 }
-/* 
-#profile-page .smart-select-popover .popover-inner {
-  max-height: 10vh!important;
-} */
-/* .smart-select-popover .popover-inner {
-  max-height: 50px!important;
-} */
-/* .input-focused{
-  height: 100px!important;
-} */
-
-/* Happy Wall ====================================== */
-.feedback-list li{
-  display: grid;
-  grid-template-columns: .25fr 1fr;
-  grid-gap: .5rem;
-    box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
-
-  margin-top: 1rem;
-  border-radius: 1rem;
-}
-.feedback-list ul{
-  padding: 0 1rem;
-}
-.feedback-list li img{
-  margin: 1rem auto;
-}
-.feedback{
-  margin: .5rem auto;
-}
-.happywall{
-  font-family: cursive;
-  text-align: center;
-  margin-top: 4rem;
-}
 
 /* Text Me button ==================================== */
 .md .button.button-outline{
@@ -345,8 +315,7 @@ h6,
     width: 200px;
     text-align: center;
     border-radius: 50%;
-    box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
-
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
   
 
@@ -369,9 +338,22 @@ h6,
 }
 
 
-
 /* Chat Css ============================================ */
 
+.title-chat {
+  color: black;
+    text-align: center!important;
+    margin: auto;
+    font-size: 1.5rem;
+    font-family: cursive;
+}
+.chatNav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 1px solid grey;
+  bottom: 10px;
+  background: #f1f1f1;
+}
 .messages {
   flex-grow: 1;
   padding: 20px 30px;
@@ -402,8 +384,8 @@ h6,
 .mine .message__bubble {
   background: #f15a22c9 !important;
   border-bottom-left-radius: 20px;
-  
 }
+
 
 .theirs .message__bubble {
   background: #f5f5f5;
@@ -447,9 +429,17 @@ input {
   border: 1px solid gray;
 }
 
+.footer{
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  margin-left: 15px;
+  padding: 5px 0 5px 0;
+  width: 100%;
+}
 
 
-/* Buddy Zone ============================================================ */
+ /* Buddy Zone ============================================================ */
 #view-buddyzone .buddy-zone-image img{
   border-radius: 10%;
 }
@@ -471,15 +461,35 @@ input {
   background-color: rgb(240, 240, 240);
 }
 .md .page>.navbar~.searchbar{
-  top:65px!important;
+  top:60px!important;
+}
+
+/* Happy Wall ====================================== */
+.feedback-list li{
+  display: grid;
+  grid-template-columns: .25fr 1fr;
+  grid-gap: .5rem;
+    box-shadow: rgba(156, 172, 172, 0.4) 0px 8px 8px;
+
+  margin-top: 1rem;
+  border-radius: 1rem;
+}
+.feedback-list ul{
+  padding: 0 1rem;
+}
+.feedback-list li img{
+  margin: 1rem auto;
+}
+.feedback{
+  margin: .5rem auto;
+}
+.happywall{
+  font-family: cursive;
+  text-align: center;
+  margin-top: 4rem;
 }
 
 
-.footer{
-  position: fixed;
-  bottom: 0;
-  background: #fff;
-  margin-left: 15px;
-  padding: 5px 0 5px 0;
-  width: 100%;
-}
+
+
+

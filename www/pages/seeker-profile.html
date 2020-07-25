@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>Buddy</title>
+  
+    <link rel="stylesheet" href="../framework7/css/framework7.min.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link rel="stylesheet" href="../css/app.css">
+    
+	<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-firestore.js"></script>
+</head>
+<script>
+  var userrID = localStorage.getItem("userId");
+  console.log("Profileiddd-----",userrID);
+  //initialize firebase
+  if (typeof firebase === 'undefined') {
+    alert('Firebase SDK not detected. You must include it before initialization');
+  }
+
+  firebase.initializeApp({
+      apiKey: "AIzaSyBgkBUh3Jxkya6NW0CcKh0ZkV3tq70Nd6c",
+      authDomain: "buddy.com",
+      databaseURL: "https://buddy-bbde5.firebaseio.com/",
+      projectId: "buddy-bbde5",
+      storageBucket: "gs://buddy-bbde5.appspot.com/",
+      messagingSenderId: "905442756005",
+      appId: "1:905442756005:android:6179c8baffe6aab326944c" 
+      
+  
+  });
+
+
+    //this is the name of our db collection to store chat messages 
+    const PROFILE_DB = 'profile_seeker';
+      
+    const db = firebase.firestore(); //get a handle to firestore DB
+  
+    function seekerProfile() {
+       
+      var profileName = document.getElementById('profileName').value;
+      var profileEmail = document.getElementById('profileEmail').value;
+      var profileNewPassword = document.getElementById('profileNewPassword').value;
+
+      console.log(profileName);
+      var myObject = {
+          
+          profileName: profileName,
+          profileEmail:profileEmail,
+          profileNewPassword: profileNewPassword,
+          
+        }
+        
+         db.collection(PROFILE_DB).add(myObject)
+            .then(function (docRef) { 
+              //if add is successful
+              //alert("Successfully Added " + docRef.id);
+              window.location="../tabs.html";
+            })
+            .catch(function (error) {  //if add fails
+             alert("Fails: " + error);
+        });
+}
+</script>
+
+   
+
+<body>
+
+  <div class="page" data-name="profile" id="profile-page">
+
+    <div class="navbar">
+        <div class="navbar-inner sliding">
+          <div class="left sliding">
+            <img src="../image/Buddy-logo.svg" width="90px" height="90px"> 
+          </div>
+    
+          <div class="title sliding">Profile</div>
+    
+          <div class="right ">
+            <img src="../image/dummy.jpg" class="image-cover"> 
+          </div>
+        </div>
+      </div>
+
+    <div class="page-content">
+
+
+      <div class="main-profile">
+        <img src="../image/dummy.jpg" class="profile">
+      </div>
+        <!-- <button  class="button-edit button-raised open-toast-callback">Edit Photo</button> -->
+        <!-- <a class="link popover-open" href="#" data-popover=".popover-links">Edit Photo</a> -->
+        <div class="cameraBtn">
+          <div class="takePicture-wrapper">
+            <button id="takePicture" class="button button-outline">Take Picture</button>
+          </div>
+          <div class="usePicture-wrapper">
+            <button id="usePicture" class="button button-outline">Use Picture</button>
+          </div>
+          <div class="removePicture-wrapper">
+            <button id="removePicture" class="button button-outline">Remove Picture</button>
+          </div>
+        </div>
+
+        <form class="list form-store-data" id="my-form">
+          <ul>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">Name</div>
+                  <div class="item-input-wrap">
+                    <input id="profileName" type="text" placeholder="Your name" required data-error-message="Enter valid name."/>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">E-mail</div>
+                  <div class="item-input-wrap">
+                    <input id="profileEmail" type="email" placeholder="Email" data-error-message="Enter valid email." />
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">New Password</div>
+                  <div class="item-input-wrap">
+                    <input id="profileNewPassword" type="password" placeholder="New Password" data-error-message="Enter only numbers." />
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <div class="block">
+            <div class="row">
+              <button class="col button button-fill button-round" onclick="seekerProfile()">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="../framework7/js/framework7.min.js"></script>
+    <script type="text/javascript" src="../js/app.js"></script>
+
+
+
+</body>
+
+</html>

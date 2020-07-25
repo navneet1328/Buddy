@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>Buddy</title>
+
+  <link rel="stylesheet" href="../framework7/css/framework7.min.css">
+  <link rel="stylesheet" href="../css/icons.css">
+  <link rel="stylesheet" href="../css/app.css">
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+</head>
+
+<body>
+<script>
+  // dynamic code
+  // Firebase Initialization
+  firebase.initializeApp({
+    
+    apiKey: "AIzaSyBgkBUh3Jxkya6NW0CcKh0ZkV3tq70Nd6c",
+    authDomain: "buddy.com",
+    databaseURL: "https://buddy-bbde5.firebaseio.com/",
+    projectId: "buddy-bbde5",
+    storageBucket: "gs://buddy-bbde5.appspot.com/",
+    messagingSenderId: "905442756005",
+    appId: "1:905442756005:android:6179c8baffe6aab326944c" 
+    
+});
+
+  var db = firebase.firestore();
+  // var docContent = db.collection("volunteer_info").doc("Hlu2vavzGXUivjJlJjc2").get();
+   
+  var ref = database.ref('Name');
+  ref.on('value',gotData)
+   
+
+</script>
+<div class="page " data-name="home">
+
+  <div class="navbar">
+    <div class="navbar-inner sliding">
+      <div class="left sliding">
+        <img src="image/Buddy-logo.svg" width="90px" height="90px">
+      </div>
+
+      <div class="title sliding">Home</div>
+
+      <div class="right ">
+        <img src="image/dummy.jpg" class="image-cover">
+      </div>
+    </div>
+  </div>
+
+
+  
+  <!-- Volunteer Information -->
+  <div class="page page-content volt-info">
+    <div class="row no-gap">
+      
+      <div class="col-33">
+        <a class="popup-open" data-popup=".popup-firstVolt">
+        <div class="card demo-card-header-pic">
+          <div class="card-content">
+            <img src="../image/obi-onyeador-7ckRPDhlgOk-unsplash.jpg" width="100" />
+            <img class="flag-icon" src="../image/flags/flags-02.svg" width="20" />
+
+            <div class="volt-name">Bhumili</div>
+            <h7>UI/UX</h7>
+          </div>
+        </div>
+        </a>
+      </div>
+
+      <div class="col-33">
+        <a class="popup-open" data-popup=".popup-secondVolt">
+        <div class="card demo-card-header-pic">
+          <div class="card-content">
+            <!-- Image of the volunteer -->
+            <img src="../image/jakob-owens-o3kzLw5xCQ0-unsplash.jpg" width="100" />
+            <!-- Info of the volunteer -->
+            <img class="flag-icon" src="../image/flags/flags-06.svg" width="20" />
+  
+            <div class="volt-name">Andrew</div>
+            <h7>Photographer</h7>
+          </div>
+        </div>
+        </a>
+      </div>
+  
+      <div class="col-33">
+        <a class="popup-open" data-popup=".popup-thirdVolt">
+        <div class="card demo-card-header-pic">
+          <div class="card-content">
+            <!-- Image of the volunteer -->
+            <img src="../image/pradeep-ranjan-qMrXRcDP5Vw-unsplash.jpg" width="100" />
+            <!-- Info of the volunteer -->
+            <img class="flag-icon" src="../image/flags/flags-01.svg" width="20" />
+
+            <div class="volt-name">Simran</div>
+            <h7>Banker</h7>
+          </div>
+        </div>
+        </a>
+      </div>
+    </div>
+
+    
+  </div>
+
+  
+  <!-- Pop up the details of thw volunteer -->
+  <div class="popup popup-firstVolt">
+    <div class="view">
+      <div class="page">
+        <div class="navbar">
+          <div class="navbar-bg"></div>
+          <div class="navbar-inner">
+            <div class="left sliding">
+              <img src="image/Buddy-logo.svg" width="90px" height="90px">
+            </div>
+            <div class="title">Bhumili</div>
+            <div class="right">
+              <a class="link popup-close">X</a>
+            </div>
+          </div>
+        </div>
+        <div class="page-content">
+          <img src="../image/obi-onyeador-7ckRPDhlgOk-unsplash.jpg" class="image-about">
+          <div class="about-body">
+            <h3>Bhumili</h3>
+            <p>“Swift sustainability is my true calling. 
+              I am a person with still to know the personality, that's I am still exploring myself by putting into different fields and circumstances. The urge of exploring has landed me in exploring the diversity of Canada. One could easily find me attracted to innovation and I always try contributing to the best of my potential. I am empathetic and have strong command over communication because of which I am always part of a group or individual activities that can range from either learning or leading.”</p>
+            <button onclick="window.location='../pages/chat-message.html'"
+              class="text-me button button-outline button-raised">Send Message</button>
+          </div>  
+        </div>
+      </div>
+      </div>
+  </div>
+
+
+  <div class="popup popup-secondVolt">
+    <div class="view">
+      <div class="page">
+        <div class="navbar">
+          <div class="navbar-bg"></div>
+          <div class="navbar-inner">
+            <div class="left sliding">
+              <img src="image/Buddy-logo.svg" width="90px" height="90px">
+            </div>
+            <div class="title">Andrew</div>
+            <div class="right">
+              <a class="link popup-close">X</a>
+            </div>
+          </div>
+        </div>
+        <div class="page-content">
+          <img src="../image/jakob-owens-o3kzLw5xCQ0-unsplash.jpg" class="image-about">
+          <div class="about-body">
+            <h3>Andrew</h3>
+            <p>“Studies have shown that humans create trust, firstly, on a visual level. We initially study a person’s eyes, then judge his/her overall demeanor. Because a business is largely researched on the web, the best thing a business owner can do is create a peripheral layer of trust in a short amount of time. A photo does this in spades.”</p>
+            <button onclick="window.location='../pages/chat-message.html'"
+              class="text-me button button-outline button-raised">Send Message</button>
+          </div>  
+        </div>
+      </div>
+      </div>
+  </div>
+
+
+  <div class="popup popup-thirdVolt">
+    <div class="view">
+      <div class="page">
+        <div class="navbar">
+          <div class="navbar-bg"></div>
+          <div class="navbar-inner">
+            <div class="left sliding">
+              <img src="image/Buddy-logo.svg" width="90px" height="90px">
+            </div>
+            <div class="title">Simran</div>
+            <div class="right">
+              <a class="link popup-close">X</a>
+            </div>
+          </div>
+        </div>
+        <div class="page-content">
+          <img src="../image/pradeep-ranjan-qMrXRcDP5Vw-unsplash.jpg" class="image-about">
+          <div class="about-body">
+            <h3>Simran</h3>
+            <p>“Successful personal banker with a proven history of establishing valuable relationships with each client. Adept at utilizing a variety of computer software platforms to manage accounts and maintain customer service notes. Maintains a growing library of information on current banking products, and tracks the trends that will lead to new offerings.”</p>
+            <button onclick="window.location='../pages/chat-message.html'"
+              class="text-me button button-outline button-raised">Send Message</button>
+          </div>  
+        </div>
+      </div>
+      </div>
+  </div>
+
+
+
+
+</div>
+
+
+
+  <!-- Script for Framework 7 -->
+
+  <script type="text/javascript" src="../framework7/js/framework7.min.js"></script>
+  <script type="text/javascript" src="../js/app.js"></script>
+
+</body>
+
+</html>

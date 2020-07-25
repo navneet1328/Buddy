@@ -21,7 +21,7 @@ routes = [
   },
   {
     path: '/profile/',
-    url: './pages/profile.html',
+    url: './pages/seeker-profile.html',
   },
   // Page Loaders & Router
   {

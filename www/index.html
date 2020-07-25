@@ -1,188 +1,236 @@
-<!DOCTYPE html>
-<html>
-
-<head>
+<!-- Import the additional components ************************************************************************************-->
   <meta charset="utf-8">
-
-  <meta http-equiv="Content-Security-Policy"
-    content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
-  <title>Buddy</title>
   <link rel="stylesheet" href="./framework7/css/framework7.min.css">
   <link rel="stylesheet" href="./css/icons.css">
   <link rel="stylesheet" href="./css/app.css">
-
   <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
+  <script src="./framework7/js/framework7.min.js"></script>
+  <script src="./js/app.js"></script>
 
-</head>
+
+  <!-- Functionality Part *************************************************************************************************
+  *************************************************************************************************************************-->
 
 <script>
 
-  // Firebase Initialization
-  firebase.initializeApp({
-      apiKey: "AIzaSyBgkBUh3Jxkya6NW0CcKh0ZkV3tq70Nd6c",
-      authDomain: "buddy.com",
-      databaseURL: "https://buddy-bbde5.firebaseio.com/",
-      projectId: "buddy-bbde5",
-      storageBucket: "gs://buddy-bbde5.appspot.com/",
-      messagingSenderId: "905442756005",
-      appId: "1:905442756005:android:6179c8baffe6aab326944c" 
-      
+// Firebase Initialization ======================
+firebase.initializeApp({
+  apiKey: "AIzaSyBgkBUh3Jxkya6NW0CcKh0ZkV3tq70Nd6c",
+  authDomain: "buddy.com",
+  databaseURL: "https://buddy-bbde5.firebaseio.com/",
+  projectId: "buddy-bbde5",
+  storageBucket: "gs://buddy-bbde5.appspot.com/",
+  messagingSenderId: "905442756005",
+  appId: "1:905442756005:android:6179c8baffe6aab326944c" 
+});
+
+// Sign-Up Button Functionality =====================
+function signUp_submit(){
+
+  // Get values of email and password from input
+  var email_signup = document.getElementById("su_email").value;
+  var password_signup = document.getElementById("su_password").value;
+
+  var cookieValue = document.getElementById("cardType").getAttribute("data-value"); 
+  console.log("cookieValue",cookieValue);
+
+  // Add data in firebase DB
+  // firebase.auth().createUserWithEmailAndPassword(email_signup,password_signup)
+  // .then(function (){
+  //   console.log("Sign Up Successful");
+  //   window.location="../pages/seeker-profile.html";
+  //   console.log("signUp_submit",user.uid);
+  // })
+  // .catch(function (error){
+  //   console.log(error.message);
+  // });
+
+}
+
+
+function typeValue(ev){
+  console.log("Valueee-",ev);
+}
+  
+// Sign-In Button Functionality =====================
+function signIn_submit(){
+
+  // Get values of email and password from input
+  var email_signin = document.getElementById("si_email").value;
+  var password_signin = document.getElementById("si_password").value;
+
+  // Add data in firebase DB
+  firebase.auth().signInWithEmailAndPassword(email_signin,password_signin)
+  .then(function (){
+    console.log("Sign In Successful");
+    //console.log("signIn_submit",user.uid);
+    window.location="./tabs.html";
+  })
+  .catch(function (error){
+    console.log(error.message);
   });
 
-      // Sign-Up Button Functionality
-      function signUp_submit(){
-    var email_signup = document.getElementById("su_email").value;
-    var password_signup = document.getElementById("su_password").value;
-      firebase.auth().createUserWithEmailAndPassword(email_signup,password_signup);
-      console.log("Sign Up Successfully");
-     // <a href="./tabs.html" class="button button-raised open-toast-bottom">Toast on Bottom</a>
-      window.location="./tabs.html";
-  }
+}
 
-  
-  // Sign-In Button Functionality
-  function signIn_submit(){
-    var email_signin = document.getElementById("si_email").value;
-    var password_signin = document.getElementById("si_password").value;
-    firebase.auth().signInWithEmailAndPassword(email_signin,password_signin);
-    console.log("Sign In Successful")
-  }
+// Check the user , if user is already logged in or not ========================
+firebase.auth().onAuthStateChanged(function(user) {
 
-  // If user is sign-in or not. 
-  firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    console.log("Welcome",user.uid);
-    if (user != null) {
-    user.providerData.forEach(function (profile) {
-      //window.location="./tabs.html";
-    console.log("  Dataa: "+user.displayName);
+    console.log("Welcome",user.uid); 
+  
+    // Set the userId in the local storage
+    localStorage.setItem("userId",user.uid);
+    var User_Id = localStorage.getItem("userId"); 
+
+      // CHAT MESSAGE (Static Condition) - If the volunteer ID is "G8gikg4N7qOTzudnSECb2znIxsc2" then set the name "Bhumili" otherwise "Navneet"
+      if(User_Id=="G8gikg4N7qOTzudnSECb2znIxsc2"){
+        localStorage.setItem("receiverId","cD5Nt2a5IZNt4Be5iQ2MeGNSBF23");
+        localStorage.setItem("user_name","Bhumili");
+      }else{
+        localStorage.setItem("receiverId","G8gikg4N7qOTzudnSECb2znIxsc2");
+        localStorage.setItem("user_name","Navneet")
+      }
+
+      if (user != null) {
+        user.providerData.forEach(function (profile) {
+        //window.location="./tabs.html";
+        console.log("  Dataa: ", JSON.stringify(profile));
+        // localStorage.setItem("email","fdsfsfsfddfd");
       });
     }
-    
-  } else {
-    console.log("Bye user");
+
+  }else {
+    console.log("No user");
   }
+
 });
-  
 
-  function forgot_password()
-  {
-    var auth = firebase.auth();
-    var emailAddress = "navneet1328@gmail.com";
 
-    auth.sendPasswordResetEmail(emailAddress).then(function() {
-      // Email sent.
-      console.log("email sent")
-    }).catch(function(error) {
-      // An error happened.
-    });
-  }
+// Forgot Password Functionality ========================================
+function forgot_password()
+{
+  var auth = firebase.auth();
+  var emailAddress = "navneet1328@gmail.com";
+  auth.sendPasswordResetEmail(emailAddress).then(function() {
+    // Email sent.
+    console.log("Check the email to reset password.")
+  }).catch(function(error) {
+    // An error happened.
+    console.log(error.message);
+  });
+}
+
 </script>
-<body class="page-content">
+
+<div class="page-content">
+
+  <!-- Buddy Logo -->
   <div class="logo-img">
     <img src="./image/Buddy-logo.svg" alt="logo" style="width: 200px; height: 200px; margin: auto;">
   </div>
+
+  <!-- Tabs Content -->
   <div class="view view-main tab tab-active">
-    <!-- Page, data-name contains page name which can be used in page callbacks -->
-    <div class="page">
-      <div class="card demo-card-header-pic">
-        <div class="card-header align-items-flex-end">
-          <div class="login-header">
-            <!-- Tab 1 -->
-            <a href="#" class="tab-link tab-link-active" data-tab=".tab1">SIGN IN</a>
-            <!-- Tab 2 -->
-            <a href="#" class="tab-link" data-tab=".tab2">SIGN UP</a>
-          </div>
-        </div>
-        <div class="card-content-padding">
-          <div class="tabs tabs-top">
 
-            <!-- Tab 1 Content  -->
-            <div class="tab tab1 tab-active box">
+  <!-- Page, data-name contains page name which can be used in page callbacks -->
+  <div class="page">
+  <div class="card demo-card-header-pic">
 
-              <!-- Login Form -->
+      <div class="card-header align-items-flex-end">
 
-              <form id="login-form">
-                <div class="inputBox">
-                  <input type="email" id="si_email" name="email" required onkeyup="this.setAttribute('value',this.value);" value="">
-                  <label for="email">Email</label>
-                </div>
-                <div class="inputBox">
-                  <input type="password" id="si_password" name="pswd" required onkeyup="this.setAttribute('value',this.value);" value="">
-                  <label for="pswd">Password</label>
-                  <p onclick="forgot_password()">Forgot Password?</p>
-                </div>
-              </form>
-
-              <!-- Login Button - Navigating to Home Page -->
-              <input onclick="signIn_submit()" type="submit" name="sign-in" value="Sign In">
-              <!-- <div class="col button button-fill button-round" onclick="window.location='tabs.html'"></div> -->
-            </div>
-
-            <!-- Tab 2 Content  -->
-            <div class="tab tab2">
-              <div class="tab tab1 tab-active box">
-
-                <!-- Login Form -->
-  
-                <form id="login-form">
-                  <div class="inputBox">
-                    <input type="email" id="su_email" name="email" required onkeyup="this.setAttribute('value',this.value);" value="">
-                    <label for="email">Email</label>
-                  </div>
-                  <div class="inputBox">
-                    <input type="password" id="su_password" name="pswd" required onkeyup="this.setAttribute('value',this.value);" value="">
-                    <label for="pswd">Password</label>
-                  </div>
-                </form>
-
-                <!-- <div class="col button button-fill button-round" onclick="window.location='tabs.html'"></div> -->
-              
-              <div class="block sign-up-block">
-                
-                <!-- Volunteer Card -->
-                <div class="sign-up-card button-large button-raised volunteer-card">
-                  <div class="sign-up-card-inner" >
-                    <img src="./image/Buddy-icon-volunteer.svg" alt="volunteer-vector">
-                    <h3 class="sign-up-as">As Volunteer</h3>
-                  </div>
-                 
-                </div>
-
-                <div class="sign-up-card button-large button-raised seeker-card">
-                  <div class="sign-up-card-inner">
-                    <img src="./image/Buddy-icon-seeker.svg" alt="seeker-vector">
-                    <h3 class="sign-up-as">As Seeker</h3>
-                  </div>
-                </div>
-              </div>
-
-              <input onclick="signUp_submit()" type="submit" name="sign-up" value="Sign Up">
-            </div>
-            </div>
-          </div>
-
-
+        <!-- Tabs of SignIn and Signup -->
+        <div class="login-header">
+          <!-- Tab 1 -->
+          <a href="#" class="tab-link tab-link-active" data-tab=".tab1">SIGN IN</a>
+          <!-- Tab 2 -->
+          <a href="#" class="tab-link" data-tab=".tab2">SIGN UP</a>
         </div>
 
       </div>
+
+  <div class="card-content-padding">
+      <div class="tabs tabs-top">
+
+        <!-- Tab 1 Content ================================================================== -->
+      <div class="tab tab1 tab-active box">
+
+        <!-- Login Form -->
+        <form id="signin-form">
+          <div class="inputBox">
+            <input type="email" id="si_email" placeholder="Email" validate data-error-message="Enter valid email.">
+            <label for="email">Email</label>
+          </div>
+          <div class="inputBox">
+            <input type="password" id="si_password" placeholder="Password" data-error-message="Enter only numbers.">
+            <label for="pswd">Password</label>
+            <p onclick="forgot_password()">Forgot Password?</p>
+          </div>
+        </form>
+
+        <!-- Sign In Button -->
+        <input onclick="signIn_submit()" type="submit" name="sign-in" value="Sign In">
+      </div>
+
+    <!-- Tab 2 Content ======================================================================= -->
+    <div class="tab tab2">
+    <div class="tab tab1 tab-active box">
+
+        <!-- Login Form -->
+
+        <form id="signup-form">
+          <div class="inputBox">
+            <input type="email" id="su_email" placeholder="Email" validate data-error-message="Enter valid email.">
+            <label for="email">Email</label>
+          </div>
+          <div class="inputBox">
+            <input type="password" id="su_password" placeholder="Password" data-error-message="Enter only numbers.">
+            <label for="pswd">Password</label>
+          </div>
+        </form>
+
+        <!-- SignUp Tab showing cards -->
+        <div class="block sign-up-block">
+
+          <!-- Volunteer Card -->
+          
+          <div class="sign-up-card button-large button-raised volunteer-card">
+            <div onclick="typeValue('Volt')"  class="sign-up-card-inner" >
+              <img src="./image/Buddy-icon-volunteer.svg" alt="volunteer-vector">
+              <h3 class="sign-up-as">As Volunteer</h3>
+            </div>
+          </div>
+
+          <!-- Seeker Card -->
+          <div class="sign-up-card button-large button-raised seeker-card">
+            <div onclick="typeValue('Seeker')" class="sign-up-card-inner">
+              <img src="./image/Buddy-icon-seeker.svg" alt="seeker-vector">
+              <h3 class="sign-up-as">As Seeker</h3>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- SignUp Button -->
+        <input type="submit" name="sign-up" value="Sign Up" onclick="signUp_submit()">
+    </div>
     </div>
 
+
+      </div>
+
+
+</div>
+
   </div>
   </div>
 
+  </div>
+</div>
 
-  <script src="./framework7/js/framework7.min.js"></script>
-  <!-- Your custom app scripts -->
-  <script src="./js/app.js"></script>
-
-</body>
-
-</html>

@@ -18,72 +18,52 @@
 	<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-firestore.js"></script>
 </head>
+<!-- <div class="navbar">
+  <div class="navbar-inner sliding">
+    <div>
+      <img src="../image/Buddy-logo.svg" width="90px" height="90px">
+    </div>
 
+    <div class="title sliding">Chat</div>
+
+    <div class="right ">
+      <img src="../image/dummy.jpg" class="image-cover">
+    </div>
+  </div>
+</div>   -->
 
 <body>
+  
   <div class="page">
-
-    
     <div class="page-content">
-   
-      <!-- <div class="navbar">
-        <div class="navbar-inner sliding">
-          <div class="left sliding">
-            <img src="../image/Buddy-logo.svg" width="90px" height="90px"> 
-          </div>
-    
-          <div class="title sliding">Chat</div>
-    
-          <div class="right ">
-            <img src="../image/dummy.jpg" class="image-cover"> 
-          </div>
-        </div>
+      <div class="chatNav">
+      <img src="../image/Buddy-logo.svg" width="90px" height="90px">
+      <div class="title-chat">Chat</div>
+      <img src="../image/dummy.jpg" class="image-cover">
       </div>
-       -->
-
 		<div class="messages">
 		</div>
 		<div class="footer">
-			<input type="text" class="message_type" placeholder="Type your message..">
+			<input type="text" id="input" class="message_type" placeholder="Type your message..">
 			<button id="sendBtn" class="send_button">Send</button>
     </div>  
   </div>
-	<!-- <div class="content"> 
-    
-    <div class="navbar">
-        <div class="left sliding">
-          <img src="../image/Buddy-logo.svg" width="90px" height="90px">
-        </div>
-  
-        <div class="title sliding">Chat</div>
-  
-        <div class="right ">
-          <img src="../image/dummy.jpg" class="image-cover">
-        </div>
-    </div>
-
-		<div class="messages">
-		</div>
-		<div class="footer">
-			<input type="text" class="message_type" placeholder="Type your message..">
-			<button id="sendBtn" class="send_button">Send</button>
-		</div>
-	</div> -->
-
-
-
-
+</div>
 <script type="text/javascript">
+var userrID = localStorage.getItem("userId");
+var receiverID = localStorage.getItem("receiverId");
+var UserName = localStorage.getItem("user_name");
 
-  
+
+  console.log("userrID-----",userrID);
+  console.log("receiverID-----",receiverID);
+  console.log("UserNmae-----",UserName);
   //initialize firebase
   if (typeof firebase === 'undefined') {
     alert('Firebase SDK not detected. You must include it before initialization');
   }
+
   firebase.initializeApp({
-    
-    //replace this with your firebase project settings & save . 
-    //then open this page from two browser and chat
       apiKey: "AIzaSyBgkBUh3Jxkya6NW0CcKh0ZkV3tq70Nd6c",
       authDomain: "buddy.com",
       databaseURL: "https://buddy-bbde5.firebaseio.com/",
@@ -99,17 +79,17 @@
   const BASIC_CHAT_DB = 'basic_chat';
   
   // User name
-  let NAME = "Navneet";
+  //let NAME = "Navneet";
   
-  //let NAME = "User_"+Math.round(Math.random()*1000);
-  // /addMessage2DOM({ content: `Live Chat, ${NAME}`, name: "" });
+  let USERID = userrID;
+ // addMessage2DOM({ content: `Live Chat, ${USERID}`, sender_id: "" });
   
   const db = firebase.firestore(); //get a handle to firestore DB
   
   //this method adds the given data to page
   function addMessage2DOM(data, id) {
   
-    let side = (data.name == NAME ? "mine" : "theirs")
+    let side = (data.sender_id == USERID ? "mine" : "theirs")
     let msg = `<div class="message ${side}">
       <div class="message__name">${data.name}</div>
       <div class="message__bubble">${data.content}</div>
@@ -117,7 +97,8 @@
   
     
     const allMessages = document.querySelector('.messages');
-    allMessages.innerHTML += msg;//add message to the page
+    allMessages.innerHTML += msg;
+    //add message to the page
     // Scroll messages area to its bottom 
     allMessages.scrollTop = allMessages.scrollHeight - allMessages.clientHeight; //scroll down as new chat messages being added
     return;
@@ -128,14 +109,20 @@
   button.addEventListener('click', () => {  //this function calls addMessage2DB with data from page
     console.log("Click")
     const input = document.querySelector('#input');
+    
     const value = input.value;
+    console.log("ClickValue",value);
     input.value = ''; //clear it after reading
   
     const data = {
-      name: NAME,
+      name: UserName,
       content: value,
+      sender_id:userrID,
+      receiverId:receiverID,
       time: new Date()
     };
+
+    console.log("ClickData",data);
     //insert to DB and then snapshot handler takes care of adding it to DOM
     addMessage2DB(data);
     return;
@@ -143,7 +130,7 @@
   
   //this method adds the given data to firebase database collection
   function addMessage2DB(data) {
-    console.log(data);
+    console.log("addMessage2DB"+data);
     db.collection(BASIC_CHAT_DB).add(data)
       .then(function (docRef) {  //if add is successful
         console.log("Document written with ID: " + docRef.id);
@@ -159,7 +146,28 @@
     console.log("querySnapshot.docs.length: " + querySnapshot.docs.length);
     //querySnapshot.forEach((doc) => {  //if you want all
     querySnapshot.docChanges().forEach((change) => {  //if you want only changes
+      
+      console.log("USER_ID",userrID);
+      console.log("RECEIVER_ID",receiverID);
+
+      if(change.doc.data().sender_id==userrID)
+      {
+      console.log("IfChange",change.doc.data());
+      if(change.doc.data().receiverId==receiverID)
+      {
+      console.log("IfChange","Found");
       addMessage2DOM(change.doc.data(), change.doc.id);
+      }else{
+        
+      console.log("IfChange","NotFoundFound");
+      }
+      }else if(change.doc.data().sender_id==receiverID){
+        addMessage2DOM(change.doc.data(), change.doc.id);
+     
+
+      }else{
+
+      }
     });
   
   });
