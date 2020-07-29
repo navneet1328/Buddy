@@ -1,3 +1,6 @@
+
+
+
 // Dom7
 var $$ = Dom7;
 var routes;
@@ -7,18 +10,9 @@ var routes;
 var app = new Framework7({
   root: '#app', // App root element
   id: 'io.framework7.testapp', // App bundle ID
-  name: 'Framework7', // App name
+  name: 'Buddy', // App name
   theme: 'auto', // Automatic theme detection
-  // App root data
-  data: function () {
-    return {
-      user: {
-        firstName: 'John',
-        lastName: 'Doe',
-      },
-
-    };
-  },
+ 
 
   // App root methods
   methods: {
@@ -30,16 +24,60 @@ var app = new Framework7({
   routes: routes,
 });
 
-// Init/Create views
-var homeView = app.views.create('#view-home', {
-  url: '/home/'
-});
-var buddyzoneView = app.views.create('#view-buddyzone', {
-  url: '/buddyzone/'
-});
-var settingsView = app.views.create('#view-profile', {
-  url: '/profile/'
-});
+var userTypeValue=localStorage.getItem("userType");
+var email=localStorage.getItem("Email");
+// if(userTypeValue=="Volt"){
+      
+//     // Init/Create views for Volunteer Home Page
+//     var voltBuddyZoneView = app.views.create('#view-volt-BuddyZone', {
+//       url: '/voltbuddyzone/'
+//     });
+//     var voltWallView = app.views.create('#view-volt-wall', {
+//       url: '/volthappywall/'
+//     });
+//     var voltProfileView = app.views.create('#view-volt-profile', {
+//       url: '/voltprofile/'
+//     });
+
+
+// }else if(userTypeValue=="Seeker"){
+//     // Init/Create views for Seeker Home Page
+//     var homeView = app.views.create('#view-home', {
+//       url: '/home/'
+//     });
+//     var buddyzoneView = app.views.create('#view-buddyzone', {
+//       url: '/buddyzone/'
+//     });
+//     var settingsView = app.views.create('#view-profile', {
+//       url: '/profile/'
+//     });
+// }
+
+if(email=="bhumili@gmail.com"){
+      
+   // Init/Create views for Volunteer Home Page
+   var voltBuddyZoneView = app.views.create('#view-volt-BuddyZone', {
+    url: '/voltbuddyzone/'
+  });
+  var voltWallView = app.views.create('#view-volt-wall', {
+    url: '/volthappywall/'
+  });
+  var voltProfileView = app.views.create('#view-volt-profile', {
+    url: '/voltprofile/'
+  });
+
+}else {
+  var homeView = app.views.create('#view-home', {
+    url: '/home/'
+  });
+  var buddyzoneView = app.views.create('#view-buddyzone', {
+    url: '/buddyzone/'
+  });
+  var settingsView = app.views.create('#view-profile', {
+    url: '/profile/'
+  });
+}
+
 
 
 //Login Screen Demo
@@ -86,53 +124,4 @@ var settingsView = app.views.create('#view-profile', {
 // 	console.log(' popover opened');
 //   });
 
-app.on('pageInit', function () {
-  init();
-});
- app.emit('myCustomEvent');
-
-app.on('myCustomEvent', function () {
-  init();
-});
-
-// document.addEventListener("deviceready", init, false);
-function init() {
-
-  function onSuccess(imageData) {
-    console.log('success');
-    var image = document.getElementById('myImage');
-    image.src = imageData;
-  }
-
-  function onFail(message) {
-    navigator.notification.alert(
-      message, null, "Camera Failure");
-  }
-
-  //Use from Camera
-  takePicture.addEventListener("touchend", function () {
-    console.log("Rod here in");
-    navigator.camera.getPicture(onSuccess, onFail, {
-      quality: 50,
-      sourceType: Camera.PictureSourceType.CAMERA,
-      destinationType: Camera.DestinationType.FILE_URI,
-      mediaType: Camera.mediaType.PICTURE,
-      encodingType: Camera.EncodingType.JPEG,
-      targetWidth: 300,
-      targetHeight: 400
-    });
-
-  });
-
-  //Use from Library
-  document.querySelector("#usePicture").addEventListener("touchend", function () {
-    navigator.camera.getPicture(onSuccess, onFail, {
-      quality: 50,
-      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-      destinationType: Camera.DestinationType.FILE_URI
-    });
-
-  });
-
-}
   // ======================================================================

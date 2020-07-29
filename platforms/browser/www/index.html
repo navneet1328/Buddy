@@ -9,11 +9,13 @@
   <link rel="stylesheet" href="./framework7/css/framework7.min.css">
   <link rel="stylesheet" href="./css/icons.css">
   <link rel="stylesheet" href="./css/app.css">
+  <script src="./framework7/js/framework7.min.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-auth.js"></script>
-  <script src="./framework7/js/framework7.min.js"></script>
+  
   <script src="./js/app.js"></script>
-
+  <!-- Fonts  -->
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Open+Sans:wght@600&display=swap" rel="stylesheet"> -->
 
   <!-- Functionality Part *************************************************************************************************
   *************************************************************************************************************************-->
@@ -31,47 +33,28 @@ firebase.initializeApp({
   appId: "1:905442756005:android:6179c8baffe6aab326944c" 
 });
 
-// Sign-Up Button Functionality =====================
+var userTypeValue;
+// Sign-Up Button Functionality =======================================================================================
 function signUp_submit(){
 
   // Get values of email and password from input
   var email_signup = document.getElementById("su_email").value;
   var password_signup = document.getElementById("su_password").value;
 
-  var cookieValue = document.getElementById("cardType").getAttribute("data-value"); 
-  console.log("cookieValue",cookieValue);
-
-  // Add data in firebase DB
-  // firebase.auth().createUserWithEmailAndPassword(email_signup,password_signup)
-  // .then(function (){
-  //   console.log("Sign Up Successful");
-  //   window.location="../pages/seeker-profile.html";
-  //   console.log("signUp_submit",user.uid);
-  // })
-  // .catch(function (error){
-  //   console.log(error.message);
-  // });
-
-}
-
-
-function typeValue(ev){
-  console.log("Valueee-",ev);
-}
-  
-// Sign-In Button Functionality =====================
-function signIn_submit(){
-
-  // Get values of email and password from input
-  var email_signin = document.getElementById("si_email").value;
-  var password_signin = document.getElementById("si_password").value;
-
-  // Add data in firebase DB
-  firebase.auth().signInWithEmailAndPassword(email_signin,password_signin)
+  //Add data in firebase DB
+  firebase.auth().createUserWithEmailAndPassword(email_signup,password_signup)
   .then(function (){
-    console.log("Sign In Successful");
-    //console.log("signIn_submit",user.uid);
-    window.location="./tabs.html";
+    if(userTypeValue=="Volt"){
+      console.log("Sign Up Successful",userTypeValue);
+      window.location="../pages/profile.html";
+
+    }else if(userTypeValue=="Seeker"){
+      console.log("Sign Up Successful",userTypeValue);
+      window.location="../pages/seeker-profile.html";
+    }else{
+      console.log("Select Volunteer or Seeker")
+    }
+   
   })
   .catch(function (error){
     console.log(error.message);
@@ -79,7 +62,45 @@ function signIn_submit(){
 
 }
 
-// Check the user , if user is already logged in or not ========================
+
+function userType(ev){
+  userTypeValue=ev;
+  localStorage.setItem("userType",userTypeValue);
+  console.log("Valueee-",ev);
+}
+  
+// Sign-In Button Functionality =========================================================================================
+function signIn_submit(){
+
+  // Get values of email and password from input
+  var email_signin = document.getElementById("si_email").value;
+  var password_signin = document.getElementById("si_password").value;
+
+  localStorage.setItem("Email",email_signin);
+  // Add data in firebase DB
+  firebase.auth().signInWithEmailAndPassword(email_signin,password_signin)
+  .then(function (){
+
+    if(email_signin=="bhumili@gmail.com"){
+      
+    localStorage.setItem("receiverId","QFyequXKxwfYydk21cYIueovpsE2");
+    console.log("Sign In Successful");
+    window.location="./volt-tabs.html";
+    
+    }else {
+      
+    console.log("Sign In Successful");
+    window.location="./tabs.html";
+    }
+
+  })
+  .catch(function (error){
+    console.log(error.message);
+  });
+
+}
+
+// Check the user , if user is already logged in or not ===================================================================
 firebase.auth().onAuthStateChanged(function(user) {
 
   if (user) {
@@ -89,14 +110,15 @@ firebase.auth().onAuthStateChanged(function(user) {
     localStorage.setItem("userId",user.uid);
     var User_Id = localStorage.getItem("userId"); 
 
+    
       // CHAT MESSAGE (Static Condition) - If the volunteer ID is "G8gikg4N7qOTzudnSECb2znIxsc2" then set the name "Bhumili" otherwise "Navneet"
-      if(User_Id=="G8gikg4N7qOTzudnSECb2znIxsc2"){
-        localStorage.setItem("receiverId","cD5Nt2a5IZNt4Be5iQ2MeGNSBF23");
-        localStorage.setItem("user_name","Bhumili");
-      }else{
-        localStorage.setItem("receiverId","G8gikg4N7qOTzudnSECb2znIxsc2");
-        localStorage.setItem("user_name","Navneet")
-      }
+      // if(User_Id=="G8gikg4N7qOTzudnSECb2znIxsc2"){
+      //   localStorage.setItem("receiverId","cD5Nt2a5IZNt4Be5iQ2MeGNSBF23");
+      //   localStorage.setItem("user_name","Bhumili");
+      // }else{
+      //   localStorage.setItem("receiverId","G8gikg4N7qOTzudnSECb2znIxsc2");
+      //   localStorage.setItem("user_name","Navneet")
+      // }
 
       if (user != null) {
         user.providerData.forEach(function (profile) {
@@ -113,7 +135,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 
-// Forgot Password Functionality ========================================
+// Forgot Password Functionality =========================================================================================
 function forgot_password()
 {
   var auth = firebase.auth();
@@ -164,11 +186,11 @@ function forgot_password()
         <!-- Login Form -->
         <form id="signin-form">
           <div class="inputBox">
-            <input type="email" id="si_email" placeholder="Email" validate data-error-message="Enter valid email.">
+            <input type="email" id="si_email" required onkeyup="this.setAttribute('value',this.value);" value="" validate data-error-message="Enter valid email.">
             <label for="email">Email</label>
           </div>
           <div class="inputBox">
-            <input type="password" id="si_password" placeholder="Password" data-error-message="Enter only numbers.">
+            <input type="password" id="si_password" required onkeyup="this.setAttribute('value',this.value);" value="" data-error-message="Enter only numbers.">
             <label for="pswd">Password</label>
             <p onclick="forgot_password()">Forgot Password?</p>
           </div>
@@ -186,11 +208,11 @@ function forgot_password()
 
         <form id="signup-form">
           <div class="inputBox">
-            <input type="email" id="su_email" placeholder="Email" validate data-error-message="Enter valid email.">
+            <input type="email" id="su_email" required onkeyup="this.setAttribute('value',this.value);" value="" validate data-error-message="Enter valid email.">
             <label for="email">Email</label>
           </div>
           <div class="inputBox">
-            <input type="password" id="su_password" placeholder="Password" data-error-message="Enter only numbers.">
+            <input type="password" id="su_password" required onkeyup="this.setAttribute('value',this.value);" value="" data-error-message="Enter only numbers.">
             <label for="pswd">Password</label>
           </div>
         </form>
@@ -201,7 +223,7 @@ function forgot_password()
           <!-- Volunteer Card -->
           
           <div class="sign-up-card button-large button-raised volunteer-card">
-            <div onclick="typeValue('Volt')"  class="sign-up-card-inner" >
+            <div onclick="userType('Volt')"  class="sign-up-card-inner" >
               <img src="./image/Buddy-icon-volunteer.svg" alt="volunteer-vector">
               <h3 class="sign-up-as">As Volunteer</h3>
             </div>
@@ -209,7 +231,7 @@ function forgot_password()
 
           <!-- Seeker Card -->
           <div class="sign-up-card button-large button-raised seeker-card">
-            <div onclick="typeValue('Seeker')" class="sign-up-card-inner">
+            <div onclick="userType('Seeker')" class="sign-up-card-inner">
               <img src="./image/Buddy-icon-seeker.svg" alt="seeker-vector">
               <h3 class="sign-up-as">As Seeker</h3>
             </div>

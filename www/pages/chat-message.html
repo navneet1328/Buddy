@@ -9,8 +9,7 @@
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
  
-  <!-- <link rel="stylesheet" href="../framework7/css/framework7.min.css">
-   -->
+  <link rel="stylesheet" href="../framework7/css/framework7.min.css">
   <link rel="stylesheet" href="../css/app.css">
   <!-- <link rel="stylesheet" href="../css/icons.css">
   <link rel="javascript" href="../js/app.js">
@@ -18,37 +17,38 @@
 	<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.9.0/firebase-firestore.js"></script>
 </head>
-<!-- <div class="navbar">
-  <div class="navbar-inner sliding">
-    <div>
-      <img src="../image/Buddy-logo.svg" width="90px" height="90px">
-    </div>
 
-    <div class="title sliding">Chat</div>
+<body>  
+ 
+  <div class="navbar">
+    <div class="navbar-inner sliding">
+      <div class="left sliding">
+        <i class="icon icon-back color-black " onclick="window.history.back()"></i>
+      </div>
+      <div class="title sliding">Chat</div>
 
-    <div class="right ">
-      <img src="../image/dummy.jpg" class="image-cover">
+      <div class="right image-cover" onclick="window.location='./thank-you.html'">
+        <img src="../image/feedback.svg" >
+        
+      </div>
     </div>
   </div>
-</div>   -->
 
-<body>
-  
-  <div class="page">
-    <div class="page-content">
-      <div class="chatNav">
-      <img src="../image/Buddy-logo.svg" width="90px" height="90px">
-      <div class="title-chat">Chat</div>
-      <img src="../image/dummy.jpg" class="image-cover">
-      </div>
-		<div class="messages">
-		</div>
+  <div class="page chatting">
+    
+    <div class="messages page-content"></div>  
+      
+  </div>
 		<div class="footer">
 			<input type="text" id="input" class="message_type" placeholder="Type your message..">
-			<button id="sendBtn" class="send_button">Send</button>
-    </div>  
-  </div>
-</div>
+			<button id="sendBtn" class="send_button">
+        <img src="../image/send.svg" alt="" width="35px" height="35px">
+      </button>
+  </div>  
+  
+
+ </div>
+  
 <script type="text/javascript">
 var userrID = localStorage.getItem("userId");
 var receiverID = localStorage.getItem("receiverId");
@@ -91,7 +91,6 @@ var UserName = localStorage.getItem("user_name");
   
     let side = (data.sender_id == USERID ? "mine" : "theirs")
     let msg = `<div class="message ${side}">
-      <div class="message__name">${data.name}</div>
       <div class="message__bubble">${data.content}</div>
     </div>`;
   

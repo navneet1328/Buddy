@@ -23,6 +23,23 @@ routes = [
     path: '/profile/',
     url: './pages/seeker-profile.html',
   },
+  {
+    path: '/voltbuddyzone/',
+    url: './pages/volt-buddyzone.html',
+  },
+
+  {
+    path: '/volthappywall/',
+    url: './pages/happy-wall.html',
+  },
+
+  {
+    path: '/voltprofile/',
+    url: './pages/profile.html',
+  },
+
+  
+
   // Page Loaders & Router
   {
     path: '/page-loader-template7/:user/:userId/:posts/:postId/',

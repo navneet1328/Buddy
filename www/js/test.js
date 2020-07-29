@@ -6,8 +6,16 @@ app.on('myCustomEvent', function () {
   })
   
 });
+// app.on('pageInit', function () {
+//   init();
+// });
+//  app.emit('myCustomEvent');
 
-// document.addEventListener("deviceready", init, false);
+// app.on('myCustomEvent', function () {
+//   init();
+// });
+
+//document.addEventListener("deviceready", init, false);
 function init() {
 
   function onSuccess(imageData) {
@@ -22,18 +30,30 @@ function init() {
   }
 
   //Use from Camera
-  // takePicture.addEventListener("touchend", function () {
-  //   console.log("Rod here in");
-  //   navigator.camera.getPicture(onSuccess, onFail, {
-  //     quality: 50,
-  //     sourceType: Camera.PictureSourceType.CAMERA,
-  //     destinationType: Camera.DestinationType.FILE_URI,
-  //     mediaType:0,
-  //     encodingType: Camera.EncodingType.JPEG,
-  //     targetWidth: 300,
-  //     targetHeight: 400
-  //   });
+  document.querySelector("#takePicture").addEventListener("touchend", function () {
+      console.log("BK here in");
+     // alert("click");
+    navigator.camera.getPicture(onSuccess, onFail, {
+      quality: 50,
+      sourceType: Camera.PictureSourceType.CAMERA,
+      destinationType: Camera.DestinationType.FILE_URI,
+      mediaType:0,
+      encodingType: Camera.EncodingType.JPEG,
+      targetWidth: 300,
+      targetHeight: 400
+    });
 
-  // });
+    //Use from Library
+    document.querySelector("#usePicture").addEventListener("touchend", function () {
+    console.log("BK in library");
+     // alert("Click");
+    navigator.camera.getPicture(onSuccess, onFail, {
+      quality: 50,
+      sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+      destinationType: Camera.DestinationType.FILE_URI
+    });
+
+  });
+  });
 
 }

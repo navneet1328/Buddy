@@ -12,6 +12,10 @@ body{
   display: none;
 }
 
+.md .tabbar-labels.toolbar-bottom-md .tabbar-label{
+  line-height: 1 !important;
+}
+
 .volt-info {
   bottom: 50px;
 }
@@ -25,16 +29,16 @@ img{
 
 /* Typography ========================================== */
 *{
-  font-family: 'belleza',serif;
+  font-family: 'Libre Baskerville', serif;
+  letter-spacing: .75px;
 }
-h6
-.volt-name{
-  font-family: 'ubuntu',sans-serif;
+.title,
+.volt-name,
+h3,
+h6{
+  font-family: 'Open Sans', sans-serif;
+ 
 }
-.volt-name{
-  font-weight: bold;
-}
-
 
 /* NavBar Color ======================================= */
 .navbar-inner{
@@ -54,7 +58,6 @@ h6
   height: 40px;
   border-radius: 50%;
   margin: 20px;
-
   object-fit: contain;
   object-position: center top;
   padding: 2px;
@@ -63,7 +66,6 @@ h6
 .navbar .title {
   margin: 0 16px;
   width: 100% !important;
-  font-family: cursive;
   line-height: 1.2;
   font-weight: bold;
   text-align: left;
@@ -90,7 +92,7 @@ h6
   color: #f15a22;
 }
 
-  .login-header{
+.login-header{
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -99,7 +101,7 @@ h6
   position: relative;
 }
 .box .inputBox input{
-  width: 100%;
+  width: 93%;
   height: 3rem;
   padding: 0.625rem 10px;
   font-size: 1rem;
@@ -135,17 +137,10 @@ h6
   outline: none;
   border: 2px solid #f15a22;
 }
-
-.md .button.button-outline {
-  border: 2px solid #f15a22 !important;
-  color: #000 !important;
-  font-size: .75rem !important;
-}
 .box input[type="submit"]{
   border: none;
   outline: none;
   color: #fff;
-  float: right;
   height: 2rem;
   background-color: #f15a22;
   padding: 0 1.5rem;
@@ -164,7 +159,6 @@ h6
   margin:.25rem 1rem 1rem 0;
 }
 
-
 /* Sign-Up ==================================== */
 .sign-up-block{
   display: grid;
@@ -179,7 +173,7 @@ h6
   border: 1px solid gray;
 }
 .sign-up-card:hover{
-  background-color: bisque;
+  background-color: #f0f0f0 ;
 }
 .sign-up-card-inner{
   padding: .5rem;
@@ -197,23 +191,34 @@ h6
 
 
 /* Seeker - Home ======================================= */
-
+.card-home {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+.card-home h6{
+  margin: .5rem 0;
+}
 /* Profile ==================================== */
-.image-about{
+.image-about {
   width: 150px;
   height: 150px;
-  border-radius: 50%;
-  margin: 2rem 6rem;
+  margin: auto;
   margin-bottom: -3rem;
+}
+.image-about img {
+  border-radius: 50%;
   object-fit: contain;
   object-position: center top;
   padding: 2px;
   border: 2px solid #f15a22;
 }
 .about-body{
-  margin: 0 1.5rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: .75rem;
+}
+
+.about-body h3{
+  margin-top: 3rem;
 }
 
 /* Edit Profile ====================================== */
@@ -273,7 +278,8 @@ h6
 
 /* Text Me button ==================================== */
 .md .button.button-outline{
-  border:1px solid #f15a22;
+  border:1px solid #f15a22 !important;
+  color: #f15a22 !important;
 }
 .md .button{
   color: #f15a22;
@@ -298,7 +304,6 @@ h6
   background: #ffffff !important;
   color: #f15a22 !important;
   font-size: 20px;
-  font-family: cursive;
   font-weight: 800;
 }
 
@@ -321,7 +326,8 @@ h6
 
 .main-profile{
     text-align: center;
-    margin-top: 5%;  
+    padding-top: 5%;  
+    background: #f0f0f0 ;
 }
 
 .popup-open{
@@ -342,27 +348,41 @@ h6
 
 .title-chat {
   color: black;
-    text-align: center!important;
-    margin: auto;
+    /* text-align: center!important;
+    margin: auto; */
+    align-self: center;
     font-size: 1.5rem;
-    font-family: cursive;
+    width: 100%;
+    text-align: center;
 }
 .chatNav {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  border-bottom: 1px solid grey;
-  bottom: 10px;
-  background: #f1f1f1;
+  background: #f5f5f5 !important;
+  color: lightgrey !important;
+  box-shadow: 1px 2px;
+  display: fixed;
 }
+.chatNav img{
+  margin-right: 10px;
+  float: right;
+}
+.chatting .navbar .image-cover{
+  margin: 12px 20px;
+}
+
 .messages {
   flex-grow: 1;
-  padding: 20px 30px;
+  padding: 10px;
   overflow: auto;
+  bottom: 80px;
   position: relative;
+  margin-top: 40px;
+  background: #fff !important;
 }
+
 .message {
   display: flex;
   flex-direction: column;
+  max-width: 100%;
 }
 .mine {
   align-items: flex-end;
@@ -382,7 +402,8 @@ h6
 }
 
 .mine .message__bubble {
-  background: #f15a22c9 !important;
+  background: #f15a22;
+  color: white;
   border-bottom-left-radius: 20px;
 }
 
@@ -391,9 +412,7 @@ h6
   background: #f5f5f5;
   border-bottom-right-radius: 20px;
 }
-.mine .message__bubble {
-  background: #aea;
-}
+
 
 .footer {
   line-height: 76px;
@@ -420,6 +439,7 @@ input {
   font-size: 1.2rem;
   font-weight: bolder;
   margin-right: 20px;
+  width: 15% !important;
 }
 
 .message_type{
@@ -433,11 +453,13 @@ input {
   position: fixed;
   bottom: 0;
   background: #fff;
-  margin-left: 15px;
-  padding: 5px 0 5px 0;
+  padding: 5px;
   width: 100%;
 }
 
+.right img{
+  margin-right: 5px;
+}
 
  /* Buddy Zone ============================================================ */
 #view-buddyzone .buddy-zone-image img{
@@ -465,7 +487,7 @@ input {
 }
 
 /* Happy Wall ====================================== */
-.feedback-list li{
+/* .feedback-list li{
   display: grid;
   grid-template-columns: .25fr 1fr;
   grid-gap: .5rem;
@@ -487,9 +509,11 @@ input {
   font-family: cursive;
   text-align: center;
   margin-top: 4rem;
+} */
+
+.item-title {
+  color: #000000;
 }
-
-
 
 
 

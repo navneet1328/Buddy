@@ -19,7 +19,6 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
 var $$ = Dom7;
-console.log("hello");
 $$(document).on('page:init', function (e) {
   // Page Data contains all required information about loaded and initialized page
   var page = e.detail;
@@ -32,29 +31,28 @@ $$(document).on('page:init', function (e) {
     snapshot.forEach(function (change) {
       // console.log(change.data());
       var bio = change.data().Bio;
-      console.log(change.id);
       var name = change.data().Name;
+      localStorage.setItem("user_name",name);
       // console.log(name);
       var nationality = change.data().Nationality;
       var occupation = change.data().Occupation;
       var profile = change.data().Profile;
       var username = change.data().Username;
       var dbId = change.id;
-      listData += `<li id="${dbId}" data-name="${name}">
-              <div class="col-33">
-              console.log("hello");
+      listData += `<div id="${dbId}" data-name="${name}">
+              <div>
                     <div class="card demo-card-header-pic">
                           <a href="#" data-id="${dbId}" data-popup=".popup-firstVolt" class="popup-open" >
                                 <div class="card-content">
-                                      <img src="../image/jakob-owens-o3kzLw5xCQ0-unsplash.jpg" width="100" />
-                                      <img class="flag-icon" src="${nationality}" width="25" />
+                                      <img src="image/jakob-owens-o3kzLw5xCQ0-unsplash.jpg" width="100%" />
+                                      <img class="flag-icon" src="image/flags/flags-02.svg" width="25" />
                                       <div>${name}</div>
                                       <h6>${occupation}</h6>
                                 </div>
                           </a>
                     </div>
               </div>
-              </li>`;
+          </div>`;
     })
     document.getElementById('gridFormation').innerHTML = listData;
     snapshot.forEach(function (change) {
@@ -63,16 +61,17 @@ $$(document).on('page:init', function (e) {
       // console.log("LIST ITEM ", pop.target.id);
       pop.addEventListener('click', () => {
         profileData = `<div>
-                    <img src="../image/dummy.jpg" class="image-about">
-                    <div class="about-body" id="profile-${zId}">
+                    <div class="image-about">
+                      <img src="/image/dummy.jpg" alt="volt-image">
+                    </div>
+                    <div class="about-body" id="profile-${change.data().Id}">
                           <h3>${change.data().Name}</h3>
                           <p>${change.data().Bio}</p>
-                          <button onclick="window.location='../pages/chat-inbox.html'"
+                          <button onclick="window.location='../pages/chat-message.html'"
                           class="text-me button button-outline button-raised">Text Me</button>
                     </div></div>`;
-        console.log('1) listener: ', profileData);
-
         
+        localStorage.setItem("receiverId",change.data().Id);
         // ==============================================================
         // From here code has been a contribution Of IA ROD ORNELLAS
         
@@ -84,7 +83,6 @@ $$(document).on('page:init', function (e) {
   app.on('popupOpened', function (profile) {
     let popupProfile = document.getElementById('profileDATA').innerHTML;
     if (popupProfile.length == 0) {
-      console.log('profile: ', profile);
       document.getElementById('profileDATA').innerHTML = profile;
     }
     $$('.popup-firstVolt').on('popup:close', function () {
@@ -98,7 +96,6 @@ $$(document).on('page:init', function (e) {
   });
   $$('.popup-firstVolt').on('popup:open', function () {
     
-      console.log('kulbir testing pop up open');
     
      // ==============================================================
   });
