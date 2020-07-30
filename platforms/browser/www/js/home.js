@@ -44,7 +44,7 @@ $$(document).on('page:init', function (e) {
                     <div class="card demo-card-header-pic">
                           <a href="#" data-id="${dbId}" data-popup=".popup-firstVolt" class="popup-open" >
                                 <div class="card-content">
-                                      <img src="image/jakob-owens-o3kzLw5xCQ0-unsplash.jpg" width="100%" />
+                                      <img src="${profile}" width="100%" height="100px" />
                                       <img class="flag-icon" src="image/flags/flags-02.svg" width="25" />
                                       <div>${name}</div>
                                       <h6>${occupation}</h6>
@@ -57,12 +57,13 @@ $$(document).on('page:init', function (e) {
     document.getElementById('gridFormation').innerHTML = listData;
     snapshot.forEach(function (change) {
       var zId = change.id;
+      var profile = change.data().Profile;
       let pop = document.getElementById(`${zId}`);
       // console.log("LIST ITEM ", pop.target.id);
       pop.addEventListener('click', () => {
         profileData = `<div>
                     <div class="image-about">
-                      <img src="/image/dummy.jpg" alt="volt-image">
+                      <img src="/image/dummy1.jpg" alt="volt-image">
                     </div>
                     <div class="about-body" id="profile-${change.data().Id}">
                           <h3>${change.data().Name}</h3>

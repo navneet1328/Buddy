@@ -1,6 +1,4 @@
 
-
-
 // Dom7
 var $$ = Dom7;
 var routes;
@@ -76,6 +74,51 @@ if(email=="bhumili@gmail.com"){
   var settingsView = app.views.create('#view-profile', {
     url: '/profile/'
   });
+}
+
+app.emit('myCustomEvent');
+
+app.on('myCustomEvent', function () {
+  window.addEventListener('load', function () {
+    init();
+  })
+  
+});
+document.addEventListener("deviceready", init, false);
+   
+function init() {
+alert("sfds");
+	function onSuccess(imageData) {
+		console.log('success');
+		var image = document.getElementById('myImage');
+		image.src = imageData;
+	}
+
+	function onFail(message) {
+		navigator.notification.alert(
+			message, null, "Camera Failure");
+	}	
+
+	//Use from Camera
+	document.querySelector("#takePicture").addEventListener("touchend", function() {
+		navigator.camera.getPicture(onSuccess, onFail, { 
+			quality: 50,
+			sourceType: Camera.PictureSourceType.CAMERA,
+			destinationType: Camera.DestinationType.FILE_URI
+		});
+
+	});
+
+	//Use from Library
+	document.querySelector("#usePicture").addEventListener("touchend", function() {
+		navigator.camera.getPicture(onSuccess, onFail, { 
+			quality: 50,
+			sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+			destinationType: Camera.DestinationType.FILE_URI
+		});
+
+	});
+
 }
 
 

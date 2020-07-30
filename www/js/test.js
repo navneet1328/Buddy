@@ -1,11 +1,11 @@
-app.emit('myCustomEvent');
+// app.emit('myCustomEvent');
 
-app.on('myCustomEvent', function () {
-  window.addEventListener('load', function () {
-    init();
-  })
+// app.on('myCustomEvent', function () {
+//   window.addEventListener('load', function () {
+//     init();
+//   })
   
-});
+// });
 // app.on('pageInit', function () {
 //   init();
 // });
